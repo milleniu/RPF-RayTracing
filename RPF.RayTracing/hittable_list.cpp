@@ -1,18 +1,18 @@
 ﻿#include "hittable_list.h"
 
-void hittable_list::add(const std::shared_ptr<hittable>& hittable)
+void ray_tracing::hittable::hittable_list::add(const std::shared_ptr<hittable_base>& hittable)
 {
 	hittable_vector_.push_back(hittable);
 }
 
-void hittable_list::clear()
+void ray_tracing::hittable::hittable_list::clear()
 {
 	hittable_vector_.clear();
 }
 
-bool hittable_list::hit
+bool ray_tracing::hittable::hittable_list::hit
 (
-	const ray& r,
+	const core::ray& r,
 	const float t_min,
 	const float t_max,
 	hit_record& record

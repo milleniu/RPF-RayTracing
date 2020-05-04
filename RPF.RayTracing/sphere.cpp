@@ -1,8 +1,8 @@
 #include "sphere.h"
 
-bool sphere::hit
+bool ray_tracing::hittable::sphere::hit
 (
-	const ray& r,
+	const core::ray& r,
 	const float t_min,
 	const float t_max,
 	hit_record& record

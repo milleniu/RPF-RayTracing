@@ -1,24 +1,34 @@
 #pragma once
+#ifndef RPF_RAYTRACING_RAY_H
+#define RPF_RAYTRACING_RAY_H
 
 #include "common.h"
 
-class ray
+namespace ray_tracing
 {
-public:
-	ray() = default;
-
-	ray(const point3& origin, const vector3& direction)
-		: origin_(origin), direction_(direction) {}
-
-	point3 origin() const { return origin_; }
-	vector3 direction() const { return direction_; }
-
-	point3 evaluate(const float t) const
+	namespace core
 	{
-		return origin_ + t * direction_ ;
-	}
+		class ray
+		{
+		public:
+			ray() = default;
 
-private:
-	point3 origin_;
-	vector3 direction_;
-};
+			ray(const point3& origin, const vector3& direction)
+				: origin_(origin), direction_(direction) {}
+
+			point3 origin() const { return origin_; }
+			vector3 direction() const { return direction_; }
+
+			point3 evaluate(const float t) const
+			{
+				return origin_ + t * direction_ ;
+			}
+
+		private:
+			point3 origin_;
+			vector3 direction_;
+		};
+	}
+}
+
+#endif
