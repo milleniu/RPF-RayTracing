@@ -1,14 +1,24 @@
 #include "vector3.h"
 #include "color.h"
 #include "ray.h"
+#include "hittable.h"
+#include "hittable_list.h"
+#include "sphere.h"
 
 #include <iostream>
 
-color ray_color(const ray& r)
+
+color ray_color(const ray& r, const hittable& world)
 {
+	hit_record record;
+	if (world.hit(r, 0.F, std::numeric_limits<float>::infinity(), record))
+	{
+		return (record.normal + color(1.F, 1.F, 1.F)) * 0.5F;
+	}
+
 	const auto unit_direction = unit_vector(r.direction());
-	const auto t = 0.5F * (unit_direction.y() + 1.0F);
-	return color(1.0F, 0.0F, 0.0F) * (1.0F - t) + color(0.0F, 1.0F, 0.0F) * t;
+	const auto t = 0.5F * (unit_direction.y() + 1.F);
+	return color(1.F, 1.F, 1.F) * (1.F - t) + color(0.5F, 0.7F, 1.F) * t;
 }
 
 int main()
@@ -26,6 +36,10 @@ int main()
 		const vector3 viewport_vertical(0.F, 2.25F, 0.F);
 		const auto viewport_origin = origin - viewport_horizontal / 2 - viewport_vertical / 2 - vector3(0, 0, 1);
 
+		hittable_list world;
+		world.add(std::make_shared<sphere>(point3(0.F, 0.F, -1.F), 0.5F));
+		world.add(std::make_shared<sphere>(point3(0.F, -100.5F, -1.F), 100.F));
+		
 		for (auto j = image_height - 1; j >= 0; --j)
 		{
 			std::cerr << "\rScan lines remaining: " << j << std::flush;
@@ -35,7 +49,7 @@ int main()
 				const auto v = static_cast<float>(j) / (image_height - 1.F);
 
 				const ray r(origin, viewport_origin + viewport_horizontal * u + viewport_vertical * v);
-				const auto pixel_color = ray_color(r);
+				const auto pixel_color = ray_color(r, world);
 
 				write_to(std::cout, pixel_color);
 			}

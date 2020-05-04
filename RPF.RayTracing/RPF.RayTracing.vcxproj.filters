@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\hittables">
+      <UniqueIdentifier>{6ea258de-2e36-4b6d-8deb-86d2c9a5175a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\hittables">
+      <UniqueIdentifier>{eecded2b-da6e-4a68-b73c-e9dabece5bb3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="vector3.h">
@@ -24,10 +30,25 @@
     <ClInclude Include="ray.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="hittable.h">
+      <Filter>Header Files\hittables</Filter>
+    </ClInclude>
+    <ClInclude Include="sphere.h">
+      <Filter>Header Files\hittables</Filter>
+    </ClInclude>
+    <ClInclude Include="hittable_list.h">
+      <Filter>Header Files\hittables</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sphere.cpp">
+      <Filter>Source Files\hittables</Filter>
+    </ClCompile>
+    <ClCompile Include="hittable_list.cpp">
+      <Filter>Source Files\hittables</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
