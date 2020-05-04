@@ -5,8 +5,8 @@
 struct hit_record
 {
 	float t{};
-	point3 position;
-	vector3 normal;
+	point3 position{};
+	vector3 normal{};
 	bool front_face{};
 
 	void set_face_normal(const ray&r, const vector3 outward_normal)

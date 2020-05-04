@@ -1,13 +1,11 @@
 #pragma once
 
 #include "hittable.h"
-#include "vector3.h"
-#include "ray.h"
 
 class sphere final : public hittable
 {
 public:
-	sphere() : radius(0.F) {}
+	sphere() : center({}), radius(0.F) {}
 	sphere(const point3 center, const float radius)
 		: center(center), radius(radius) {}
 

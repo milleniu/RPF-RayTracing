@@ -10,14 +10,14 @@ bool sphere::hit
 const
 {
 	const auto center_offset = r.origin() - center;
-	const auto a = r.direction().length_squared();
+	const auto a = mag_sqr(r.direction());
 	const auto h = dot(r.direction(), center_offset);
-	const auto c = center_offset.length_squared() - radius * radius;
+	const auto c = mag_sqr(center_offset) - radius * radius;
 	const auto discriminant = h * h - a * c;
 
 	if (discriminant > 0)
 	{
-		const auto root = sqrt(discriminant);
+		const auto root = boost::qvm::sqrt(discriminant);
 		auto t = (-h - root) / a;
 		if (t > t_min && t < t_max)
 		{

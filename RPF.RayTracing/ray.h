@@ -1,6 +1,6 @@
 #pragma once
 
-#include "vector3.h"
+#include "common.h"
 
 class ray
 {
@@ -15,7 +15,7 @@ public:
 
 	point3 evaluate(const float t) const
 	{
-		return origin_ + direction_ * t;
+		return origin_ + t * direction_ ;
 	}
 
 private:
