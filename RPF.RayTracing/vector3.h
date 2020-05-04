@@ -52,12 +52,8 @@ private:
 	float vector_[3];
 };
 
-// Type Aliases:
-
-using point3 = vector3;
 using color = vector3;
-
-// Utilities:
+using point3 = vector3;
 
 inline std::ostream& operator <<(std::ostream& out, const vector3& vector)
 {
