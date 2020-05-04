@@ -19,14 +19,11 @@
     <Filter Include="Source Files\hittables">
       <UniqueIdentifier>{eecded2b-da6e-4a68-b73c-e9dabece5bb3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\core">
+      <UniqueIdentifier>{6fe6bfc0-875a-4594-a0f3-6e7ba1c471b6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="color.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ray.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="hittable.h">
       <Filter>Header Files\hittables</Filter>
     </ClInclude>
@@ -36,7 +33,19 @@
     <ClInclude Include="hittable_list.h">
       <Filter>Header Files\hittables</Filter>
     </ClInclude>
+    <ClInclude Include="color.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="ray.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
     <ClInclude Include="common.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="camera.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="random.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
