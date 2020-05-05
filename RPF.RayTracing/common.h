@@ -12,6 +12,11 @@ namespace ray_tracing
 	using point3 = vector3;
 	using color = vector3;
 
+	inline vector3 operator*(const vector3& u, const vector3& v)
+	{
+		return { u.a[0] * v.a[0], u.a[1] * v.a[1], u.a[2] * v.a[2] };
+	}
+	
 	inline vector3 unit_vector(const vector3 v)
 	{
 		return v / 3;

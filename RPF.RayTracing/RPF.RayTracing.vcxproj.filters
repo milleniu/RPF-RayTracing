@@ -22,11 +22,14 @@
     <Filter Include="Header Files\hittable">
       <UniqueIdentifier>{6ea258de-2e36-4b6d-8deb-86d2c9a5175a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\material">
+      <UniqueIdentifier>{bad5432c-3a84-4e4f-9ee1-2f83dd4ce76f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\material">
+      <UniqueIdentifier>{acf59732-8ec6-458b-ab87-6f12231115fb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="hittable.h">
-      <Filter>Header Files\hittable</Filter>
-    </ClInclude>
     <ClInclude Include="sphere.h">
       <Filter>Header Files\hittable</Filter>
     </ClInclude>
@@ -48,6 +51,18 @@
     <ClInclude Include="random.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="material.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="hittable.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="lambertian.h">
+      <Filter>Header Files\material</Filter>
+    </ClInclude>
+    <ClInclude Include="hemispheric.h">
+      <Filter>Header Files\material</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -58,6 +73,12 @@
     </ClCompile>
     <ClCompile Include="hittable_list.cpp">
       <Filter>Source Files\hittables</Filter>
+    </ClCompile>
+    <ClCompile Include="lambertian.cpp">
+      <Filter>Source Files\material</Filter>
+    </ClCompile>
+    <ClCompile Include="hemispheric.cpp">
+      <Filter>Source Files\material</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -5,7 +5,7 @@ bool ray_tracing::hittable::sphere::hit
 	const core::ray& r,
 	const float t_min,
 	const float t_max,
-	hit_record& record
+	core::hit_record& record
 )
 const
 {
@@ -25,6 +25,7 @@ const
 			record.position = r.evaluate(record.t);
 			const auto outward_normal = (record.position - center) / radius;
 			record.set_face_normal(r, outward_normal);
+			record.material_ptr = material;
 			return true;
 		}
 
@@ -35,6 +36,7 @@ const
 			record.position = r.evaluate(record.t);
 			const auto outward_normal = (record.position - center) / radius;
 			record.set_face_normal(r, outward_normal);
+			record.material_ptr = material;
 			return true;
 		}
 	}

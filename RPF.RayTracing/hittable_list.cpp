@@ -15,11 +15,11 @@ bool ray_tracing::hittable::hittable_list::hit
 	const core::ray& r,
 	const float t_min,
 	const float t_max,
-	hit_record& record
+	core::hit_record& record
 )
 const
 {
-	hit_record temp_record;
+	core::hit_record temp_record;
 	auto hit = false;
 	auto closest = t_max;
 

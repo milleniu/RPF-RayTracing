@@ -2,12 +2,13 @@
 #include "hittable_list.h"
 #include "sphere.h"
 #include "camera.h"
+#include "hemispheric.h"
+#include "lambertian.h"
+#include "random.h"
 
 #include <boost/math/tools/precision.hpp>
 
 #include <iostream>
-
-#include "random.h"
 
 using namespace ray_tracing;
 using namespace ray_tracing::hittable;
@@ -22,7 +23,6 @@ int main()
 		const auto image_height = static_cast<int>(image_width / aspect_ratio);
 		const auto samples = 100;
 		const auto max_depth = 500;
-		const auto diffuse_mode = diffuse_mode::lambertian;
 
 		std::cout << "P3\n" << image_width << ' ' << image_height << "\n255\n";
 
@@ -31,13 +31,25 @@ int main()
 			{0.F, 0.F, 0.F},
 			{4.F, 0.F, 0.F},
 			{0.F, 2.25F, 0.F},
-			{0.F, 0.F, 1.F},
-			diffuse_mode
+			{0.F, 0.F, 1.F}
 		};
 
 		hittable_list world;
-		world.add(std::make_shared<sphere>(point3{0.F, 0.F, -1.F}, 0.5F));
-		world.add(std::make_shared<sphere>(point3{0.F, -100.5F, -1.F}, 100.F));
+		world.add(std::make_shared<sphere>
+			(
+				point3{0.F, 0.F, -1.F},
+				0.5F,
+				std::make_shared<material::lambertian>(color{0.7F, 0.3F, 0.F})
+			)
+		);
+
+		world.add(std::make_shared<sphere>
+			(
+				point3{0.F, -100.5F, -1.F},
+				100.F,
+				std::make_shared<material::lambertian>(color{0.8F, 0.8F, 0.F})
+			)
+		);
 
 		for (auto j = image_height - 1; j >= 0; --j)
 		{
@@ -50,7 +62,7 @@ int main()
 					const auto u = (i + random_float()) / (image_width - 1.F);
 					const auto v = (j + random_float()) / (image_height - 1.F);
 					const auto r = main_camera.get_ray(u, v);
-					pixel_color += evaluate_ray_color(r, world, max_depth, main_camera.get_diffuse_mode());
+					pixel_color += evaluate_ray_color(r, world, max_depth);
 				}
 
 				write_color_to(std::cout, pixel_color / samples);
