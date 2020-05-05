@@ -2,6 +2,7 @@
 #ifndef RPF_RAYTRACING_COMMON_H
 #define RPF_RAYTRACING_COMMON_H
 
+#include <boost/math/constants/constants.hpp>
 #include <boost/qvm/vec.hpp>
 #include <boost/qvm/vec_operations3.hpp>
 

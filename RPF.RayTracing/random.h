@@ -53,6 +53,23 @@ namespace ray_tracing
 			return p;
 		}
 	}
+
+	inline vector3 random_in_hemisphere(const vector3& normal)
+	{
+		const auto in_unit_sphere = random_vector_in_unit_sphere();
+		if (dot(in_unit_sphere, normal) > 0.F)
+			return in_unit_sphere;
+		else
+			return -in_unit_sphere;
+	}
+
+	inline vector3 random_unit_vector()
+	{
+		const auto a = random_float(0, boost::math::constants::two_pi<float>());
+		const auto z = random_float(-1.F, 1.F);
+		const auto r = boost::qvm::sqrt(1 - z * z);
+		return {r * cosf(a), r * sinf(a), z};
+	}
 }
 
 
