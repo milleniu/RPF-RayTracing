@@ -21,7 +21,13 @@ namespace ray_tracing
 	{
 		return u - 2 * dot(u, n) * n;
 	}
+
+	inline vector3 refract(const vector3 uv, const vector3& n, const float refraction_factor)
 	{
+		const auto cos_theta = fminf(dot(-uv, n), 1.F);
+		const auto parallel_vector = refraction_factor * (uv + cos_theta * n);
+		const auto perpendicular_vector = -boost::qvm::sqrt(1.F - mag_sqr(parallel_vector)) * n;
+		return parallel_vector + perpendicular_vector;
 	}
 
 	template <class T>
@@ -29,6 +35,14 @@ namespace ray_tracing
 	{
 		assert(!(max < min));
 		return value < min ? min : value > max ? max : value;
+	}
+
+	template <class T>
+	constexpr const T& schlick_approximation(const T& cosine, const T& refractive_index)
+	{
+		const auto r0 = (1 - refractive_index) / (1 + refractive_index);
+		const auto r0_sqr = r0 * r0;
+		return r0_sqr + (1 - r0_sqr) * boost::qvm::pow<T>((1 - cosine), static_cast<T>(5));
 	}
 }
 

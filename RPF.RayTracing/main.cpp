@@ -6,6 +6,7 @@
 #include "lambertian.h"
 #include "random.h"
 #include "metal.h"
+#include "dielectric.h"
 
 #include <boost/math/tools/precision.hpp>
 
@@ -39,6 +40,22 @@ hittable_list get_world()
 			point3{1.F, 0.F, -1.F},
 			0.5F,
 			std::make_shared<material::metal>(color{0.8F, 0.6F, 0.2F}, 0.F)
+		)
+	);
+
+	world.add(std::make_shared<sphere>
+		(
+			point3{ -1.F, 0.F, -1.F },
+			0.5F,
+			std::make_shared<material::dielectric>(1.5F)
+		)
+	);
+
+	world.add(std::make_shared<sphere>
+		(
+			point3{ -1.F, 0.F, -1.F },
+			-0.45F,
+			std::make_shared<material::dielectric>(1.5F)
 		)
 	);
 
