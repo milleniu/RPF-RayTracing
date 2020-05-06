@@ -31,7 +31,7 @@ namespace ray_tracing
 				return {0.F, 0.F, 0.F};
 			}
 
-			const auto unit_direction = unit_vector(r.direction());
+			const auto unit_direction = normalized(r.direction());
 			const auto t = 0.5F * (unit_direction.a[1] + 1.F);
 			return color{1.F, 1.F, 1.F} * (1.F - t) + color{0.5F, 0.7F, 1.F} * t;
 		}

@@ -5,6 +5,7 @@
 #include "hemispheric.h"
 #include "lambertian.h"
 #include "random.h"
+#include "metal.h"
 
 #include <boost/math/tools/precision.hpp>
 
@@ -14,15 +15,45 @@ using namespace ray_tracing;
 using namespace ray_tracing::hittable;
 using namespace ray_tracing::core;
 
+hittable_list get_world()
+{
+	hittable_list world;
+	world.add(std::make_shared<sphere>
+		(
+			point3{0.F, 0.F, -1.F},
+			0.5F,
+			std::make_shared<material::lambertian>(color{0.1F, 0.2F, 0.5F})
+		)
+	);
+
+	world.add(std::make_shared<sphere>
+		(
+			point3{0.F, -100.5F, -1.F},
+			100.F,
+			std::make_shared<material::lambertian>(color{0.8F, 0.8F, 0.F})
+		)
+	);
+
+	world.add(std::make_shared<sphere>
+		(
+			point3{1.F, 0.F, -1.F},
+			0.5F,
+			std::make_shared<material::metal>(color{0.8F, 0.6F, 0.2F}, 0.F)
+		)
+	);
+
+	return world;
+}
+
 int main()
 {
 	try
 	{
 		const auto aspect_ratio = 16.F / 9.F;
-		const auto image_width = 1080;
+		const auto image_width = 1280;
 		const auto image_height = static_cast<int>(image_width / aspect_ratio);
-		const auto samples = 100;
-		const auto max_depth = 500;
+		const auto samples = 128;
+		const auto max_depth = 512;
 
 		std::cout << "P3\n" << image_width << ' ' << image_height << "\n255\n";
 
@@ -34,22 +65,7 @@ int main()
 			{0.F, 0.F, 1.F}
 		};
 
-		hittable_list world;
-		world.add(std::make_shared<sphere>
-			(
-				point3{0.F, 0.F, -1.F},
-				0.5F,
-				std::make_shared<material::lambertian>(color{0.7F, 0.3F, 0.F})
-			)
-		);
-
-		world.add(std::make_shared<sphere>
-			(
-				point3{0.F, -100.5F, -1.F},
-				100.F,
-				std::make_shared<material::lambertian>(color{0.8F, 0.8F, 0.F})
-			)
-		);
+		const auto world = get_world();
 
 		for (auto j = image_height - 1; j >= 0; --j)
 		{

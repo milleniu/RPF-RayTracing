@@ -63,6 +63,9 @@
     <ClInclude Include="hemispheric.h">
       <Filter>Header Files\material</Filter>
     </ClInclude>
+    <ClInclude Include="metal.h">
+      <Filter>Header Files\material</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -78,6 +81,9 @@
       <Filter>Source Files\material</Filter>
     </ClCompile>
     <ClCompile Include="hemispheric.cpp">
+      <Filter>Source Files\material</Filter>
+    </ClCompile>
+    <ClCompile Include="metal.cpp">
       <Filter>Source Files\material</Filter>
     </ClCompile>
   </ItemGroup>

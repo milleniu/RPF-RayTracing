@@ -14,15 +14,17 @@ namespace ray_tracing
 
 	inline vector3 operator*(const vector3& u, const vector3& v)
 	{
-		return { u.a[0] * v.a[0], u.a[1] * v.a[1], u.a[2] * v.a[2] };
-	}
-	
-	inline vector3 unit_vector(const vector3 v)
-	{
-		return v / 3;
+		return {u.a[0] * v.a[0], u.a[1] * v.a[1], u.a[2] * v.a[2]};
 	}
 
-	template<class T>
+	inline vector3 reflect(const vector3& u, const vector3& n)
+	{
+		return u - 2 * dot(u, n) * n;
+	}
+	{
+	}
+
+	template <class T>
 	constexpr const T& clamp(const T& value, const T& min, const T& max)
 	{
 		assert(!(max < min));
