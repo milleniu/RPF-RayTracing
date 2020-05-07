@@ -54,6 +54,16 @@ namespace ray_tracing
 		}
 	}
 
+	inline vector3 random_vector_in_disk()
+	{
+		while (true)
+		{
+			const auto p = vector3{ random_float(-1.F, 1.F), random_float(-1.F, 1.F), 0 };
+			if (mag_sqr(p) >= 1) continue;
+			return p;
+		}
+	}
+
 	inline vector3 random_in_hemisphere(const vector3& normal)
 	{
 		const auto in_unit_sphere = random_vector_in_unit_sphere();

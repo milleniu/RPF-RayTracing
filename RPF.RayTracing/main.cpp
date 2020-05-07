@@ -80,7 +80,11 @@ int main()
 		const point3 camera_position{-2.F, 2.F, 1.F};
 		const point3 camera_target{0.F, 0.F, -1.F};
 		const float field_of_view = 20;
-		const camera main_camera{camera_position, camera_target, field_of_view, aspect_ratio};
+		const float aperture = 2;
+		
+		const auto focus_distance = mag(camera_target - camera_position);
+		
+		const camera main_camera{camera_position, camera_target, field_of_view, aspect_ratio, aperture, focus_distance};
 
 		for (auto j = image_height - 1; j >= 0; --j)
 		{
