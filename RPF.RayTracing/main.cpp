@@ -19,6 +19,7 @@ using namespace ray_tracing::core;
 hittable_list get_world()
 {
 	hittable_list world;
+	
 	world.add(std::make_shared<sphere>
 		(
 			point3{0.F, 0.F, -1.F},
@@ -67,22 +68,19 @@ int main()
 	try
 	{
 		const auto aspect_ratio = 16.F / 9.F;
-		const auto image_width = 1280;
+		const auto image_width = 1200;
 		const auto image_height = static_cast<int>(image_width / aspect_ratio);
-		const auto samples = 128;
-		const auto max_depth = 512;
+		const auto samples = 50;
+		const auto max_depth = 50;
 
 		std::cout << "P3\n" << image_width << ' ' << image_height << "\n255\n";
 
-		const camera main_camera
-		{
-			{0.F, 0.F, 0.F},
-			{4.F, 0.F, 0.F},
-			{0.F, 2.25F, 0.F},
-			{0.F, 0.F, 1.F}
-		};
-
 		const auto world = get_world();
+
+		const point3 camera_position{-2.F, 2.F, 1.F};
+		const point3 camera_target{0.F, 0.F, -1.F};
+		const float field_of_view = 20;
+		const camera main_camera{camera_position, camera_target, field_of_view, aspect_ratio};
 
 		for (auto j = image_height - 1; j >= 0; --j)
 		{

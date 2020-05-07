@@ -4,7 +4,7 @@
 
 #include <boost/math/constants/constants.hpp>
 #include <boost/qvm/vec.hpp>
-#include <boost/qvm/vec_operations3.hpp>
+#include <boost/qvm/vec_operations.hpp>
 
 namespace ray_tracing
 {
@@ -43,6 +43,11 @@ namespace ray_tracing
 		const auto r0 = (1 - refractive_index) / (1 + refractive_index);
 		const auto r0_sqr = r0 * r0;
 		return r0_sqr + (1 - r0_sqr) * boost::qvm::pow<T>((1 - cosine), static_cast<T>(5));
+	}
+
+	template <class T>
+	constexpr const T& degrees_to_radians(const T& degrees) {
+		return degrees * boost::math::constants::pi<T>() / static_cast<T>(180);
 	}
 }
 

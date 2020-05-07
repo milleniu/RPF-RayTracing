@@ -14,20 +14,27 @@ namespace ray_tracing
 		public:
 			camera
 			(
-				const point3 origin,
-				const vector3 viewport_width,
-				const vector3 viewport_height,
-				const vector3 viewport_depth
-			) :
-				origin_(origin),
-				viewport_width_(viewport_width),
-				viewport_height_(viewport_height),
-				viewport_origin_({
-					origin.a[0] - viewport_width_.a[0] / 2,
-					origin.a[1] - viewport_height_.a[1] / 2,
-					origin.a[2] - viewport_depth.a[2]
-				})
-			{ }
+				const point3 position,
+				const point3 target,
+				const float field_of_view,
+				const float aspect_ratio
+			)
+			{
+				origin_ = position;
+
+				const auto theta = degrees_to_radians(field_of_view);
+				const auto half_height = boost::qvm::tan(theta / 2);
+				const auto half_width = aspect_ratio * half_height;
+
+				const auto vector_up = vector3{ 0.F, 1.F, 0.F };
+				const auto w = normalized(position - target);
+				const auto u = normalized(cross(vector_up, w));
+				const auto v = cross(w, u);
+				
+				viewport_origin_ = origin_ - half_width * u - half_height * v - w;
+				viewport_width_ = 2 * half_width * u;
+				viewport_height_ = 2 * half_height * v;
+			}
 			
 			ray get_ray(const float u, const float v) const
 			{
