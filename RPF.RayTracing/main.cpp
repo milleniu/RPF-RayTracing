@@ -19,44 +19,94 @@ using namespace ray_tracing::core;
 hittable_list get_world()
 {
 	hittable_list world;
-	
-	world.add(std::make_shared<sphere>
+
+	world.add
+	(
+		std::make_shared<sphere>
 		(
-			point3{0.F, 0.F, -1.F},
-			0.5F,
-			std::make_shared<material::lambertian>(color{0.1F, 0.2F, 0.5F})
+			point3{0.F, -1000.F, 0.F},
+			1000.F,
+			std::make_shared<material::lambertian>(color{0.5F, 0.5F, 0.5F})
 		)
 	);
 
-	world.add(std::make_shared<sphere>
-		(
-			point3{0.F, -100.5F, -1.F},
-			100.F,
-			std::make_shared<material::lambertian>(color{0.8F, 0.8F, 0.F})
-		)
-	);
+	for (auto a = -11; a < 11; ++a)
+		for (auto b = -11; b < 11; ++b)
+		{
+			const auto material = random_float();
+			const auto position = point3{a + 0.9F * random_float(), 0.2F, b + 0.9F * random_float()};
 
-	world.add(std::make_shared<sphere>
-		(
-			point3{1.F, 0.F, -1.F},
-			0.5F,
-			std::make_shared<material::metal>(color{0.8F, 0.6F, 0.2F}, 0.F)
-		)
-	);
+			if (mag(position - vector3{4.F, 0.2F, 0.F}) > 0.9F)
+			{
+				if (material < 0.8F)
+				{
+					const auto albedo = random_vector() * random_vector();
+					world.add
+					(
+						std::make_shared<sphere>
+						(
+							position,
+							0.2F,
+							std::make_shared<material::lambertian>(albedo)
+						)
+					);
+				}
+				else if (material < 0.95F)
+				{
+					const auto albedo = random_vector(.5F, 1);
+					const auto fuzz = random_float(0, .5F);
+					world.add
+					(
+						std::make_shared<sphere>
+						(
+							position,
+							0.2F,
+							std::make_shared<material::metal>(albedo, fuzz)
+						)
+					);
+				}
+				else
+				{
+					world.add
+					(
+						std::make_shared<sphere>
+						(
+							position,
+							0.2F,
+							std::make_shared<material::dielectric>(1.5F)
+						)
+					);
+				}
+			}
+		}
 
-	world.add(std::make_shared<sphere>
+	world.add
+	(
+		std::make_shared<sphere>
 		(
-			point3{ -1.F, 0.F, -1.F },
-			0.5F,
+			point3{0.F, 1.F, 0.F},
+			1.F,
 			std::make_shared<material::dielectric>(1.5F)
 		)
 	);
 
-	world.add(std::make_shared<sphere>
+	world.add
+	(
+		std::make_shared<sphere>
 		(
-			point3{ -1.F, 0.F, -1.F },
-			-0.45F,
-			std::make_shared<material::dielectric>(1.5F)
+			point3{-4.F, 1.F, 0.F},
+			1.F,
+			std::make_shared<material::lambertian>(color{.4F, .2F, .1F})
+		)
+	);
+
+	world.add
+	(
+		std::make_shared<sphere>
+		(
+			point3{4.F, 1.F, 0.F},
+			1.F,
+			std::make_shared<material::metal>(color{.7F, .6F, .5F}, 0.F)
 		)
 	);
 
@@ -68,7 +118,7 @@ int main()
 	try
 	{
 		const auto aspect_ratio = 16.F / 9.F;
-		const auto image_width = 1200;
+		const auto image_width = 1080;
 		const auto image_height = static_cast<int>(image_width / aspect_ratio);
 		const auto samples = 50;
 		const auto max_depth = 50;
@@ -77,13 +127,12 @@ int main()
 
 		const auto world = get_world();
 
-		const point3 camera_position{-2.F, 2.F, 1.F};
-		const point3 camera_target{0.F, 0.F, -1.F};
+		const point3 camera_position{13.F, 2.F, 3.F};
+		const point3 camera_target{0.F, 0.F, 0.F};
 		const float field_of_view = 20;
-		const float aperture = 2;
-		
-		const auto focus_distance = mag(camera_target - camera_position);
-		
+		const float aperture = 0.1;
+		const float focus_distance = 10.0;
+
 		const camera main_camera{camera_position, camera_target, field_of_view, aspect_ratio, aperture, focus_distance};
 
 		for (auto j = image_height - 1; j >= 0; --j)
