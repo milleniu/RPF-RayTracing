@@ -25,6 +25,12 @@
     <Filter Include="Source Files\material">
       <UniqueIdentifier>{06a4490b-db7f-482e-80ee-9106445ceadf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\hittable">
+      <UniqueIdentifier>{6ffee0fd-279b-4e82-a263-07d29af787fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\hittable">
+      <UniqueIdentifier>{b0506af6-9f38-46a3-bc59-75cd1b9bb6aa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -44,6 +50,12 @@
     </ClCompile>
     <ClCompile Include="material\src\metal.cpp">
       <Filter>Source Files\material</Filter>
+    </ClCompile>
+    <ClCompile Include="hittable\src\hittable_list.cpp">
+      <Filter>Source Files\hittable</Filter>
+    </ClCompile>
+    <ClCompile Include="hittable\src\sphere.cpp">
+      <Filter>Source Files\hittable</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -82,6 +94,12 @@
     </ClInclude>
     <ClInclude Include="core\include\random.h">
       <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="hittable\include\hittable_list.h">
+      <Filter>Header Files\hittable</Filter>
+    </ClInclude>
+    <ClInclude Include="hittable\include\sphere.h">
+      <Filter>Header Files\hittable</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
