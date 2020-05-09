@@ -60,6 +60,9 @@
     <ClCompile Include="hittable\src\moving_sphere.cpp">
       <Filter>Source Files\hittable</Filter>
     </ClCompile>
+    <ClCompile Include="core\include\ray.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core\include\camera.h">

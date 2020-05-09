@@ -3,7 +3,6 @@
 #define RPF_RAYTRACING_HITTABLE_SPHERE_H
 
 #include "core/include/hittable.h"
-#include <utility>
 
 namespace ray_tracing
 {
@@ -12,15 +11,21 @@ namespace ray_tracing
 		class sphere final : public core::hittable_base
 		{
 		public:
-			sphere() : center({}), radius(0.F) {}
-			sphere(const point3 center, const float radius, std::shared_ptr<core::material_base> material)
-				: center(center), radius(radius), material(std::move(material)) {}
+			sphere() = default;
+
+			sphere
+			(
+				point3 center,
+				float radius,
+				std::shared_ptr<core::material_base> material
+			);
 
 			bool hit(const core::ray& r, float t_min, float t_max, core::hit_record& record) const override;
-	
-			point3 center;
-			float radius;
-			std::shared_ptr<core::material_base> material;
+
+		private:
+			point3 center_;
+			float radius_;
+			std::shared_ptr<core::material_base> material_;
 		};
 	}
 }

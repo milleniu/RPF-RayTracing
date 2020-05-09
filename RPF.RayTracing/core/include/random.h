@@ -61,7 +61,7 @@ namespace ray_tracing
 		{
 			while (true)
 			{
-				const auto p = vector3{ random_value(-1.F, 1.F), random_value(-1.F, 1.F), 0 };
+				const auto p = vector3{random_value(-1.F, 1.F), random_value(-1.F, 1.F), 0};
 				if (mag_sqr(p) >= 1) continue;
 				return p;
 			}
@@ -78,7 +78,7 @@ namespace ray_tracing
 			const auto a = random_value<float>(0, boost::math::constants::two_pi<float>());
 			const auto z = random_value(-1.F, 1.F);
 			const auto r = boost::qvm::sqrt(1 - z * z);
-			return { r * boost::qvm::sin<float>(a), r * boost::qvm::sin<float>(a), z };
+			return {r * boost::qvm::sin<float>(a), r * boost::qvm::sin<float>(a), z};
 		}
 	}
 }

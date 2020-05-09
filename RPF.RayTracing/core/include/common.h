@@ -46,7 +46,8 @@ namespace ray_tracing
 	}
 
 	template <class T>
-	constexpr T degrees_to_radians(const T& degrees) {
+	constexpr T degrees_to_radians(const T& degrees)
+	{
 		return degrees * boost::math::constants::pi<T>() / static_cast<T>(180);
 	}
 }

@@ -1,5 +1,10 @@
 ﻿#include "hittable/include/hittable_list.h"
 
+ray_tracing::hittable::hittable_list::hittable_list(const std::shared_ptr<hittable_base>& hittable)
+{
+	add(hittable);
+}
+
 void ray_tracing::hittable::hittable_list::add(const std::shared_ptr<hittable_base>& hittable)
 {
 	hittable_vector_.push_back(hittable);

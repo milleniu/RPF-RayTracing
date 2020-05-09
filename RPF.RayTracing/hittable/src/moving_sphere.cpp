@@ -1,4 +1,26 @@
 ﻿#include "hittable/include/moving_sphere.h"
+#include <utility>
+
+ray_tracing::hittable::moving_sphere::moving_sphere
+(
+	const point3 origin,
+	const point3 target,
+	const float movement_start,
+	const float movement_end,
+	const float radius,
+	std::shared_ptr<core::material_base> material
+)
+	: origin_(origin), target_(target),
+	  movement_start_(movement_start), movement_end_(movement_end),
+	  radius_(radius), material_(std::move(material)) {}
+
+
+ray_tracing::point3 ray_tracing::hittable::moving_sphere::get_center(const float t) const
+{
+	if (t < movement_start_) return origin_;
+	if (t > movement_end_) return target_;
+	return origin_ + (t - movement_start_) / (movement_end_ - movement_start_) * (target_ - origin_);
+}
 
 bool ray_tracing::hittable::moving_sphere::hit
 (
@@ -12,20 +34,20 @@ const
 	const auto center_offset = r.origin() - get_center(r.time());
 	const auto a = mag_sqr(r.direction());
 	const auto h = dot(r.direction(), center_offset);
-	const auto c = mag_sqr(center_offset) - radius * radius;
+	const auto c = mag_sqr(center_offset) - radius_ * radius_;
 	const auto discriminant = h * h - a * c;
 
 	if (discriminant > 0)
 	{
 		const auto root = boost::qvm::sqrt(discriminant);
 		auto t = (-h - root) / a;
-		if( t > t_min && t < t_max)
+		if (t > t_min && t < t_max)
 		{
 			record.t = t;
 			record.position = r.evaluate(t);
-			const auto outward_normal = (record.position - get_center(r.time())) / radius;
+			const auto outward_normal = (record.position - get_center(r.time())) / radius_;
 			record.set_face_normal(r, outward_normal);
-			record.material_ptr = material;
+			record.material_ptr = material_;
 			return true;
 		}
 
@@ -34,20 +56,12 @@ const
 		{
 			record.t = t;
 			record.position = r.evaluate(t);
-			const auto outward_normal = (record.position - get_center(r.time())) / radius;
+			const auto outward_normal = (record.position - get_center(r.time())) / radius_;
 			record.set_face_normal(r, outward_normal);
-			record.material_ptr = material;
+			record.material_ptr = material_;
 			return true;
 		}
 	}
 
 	return false;
-}
-
-
-ray_tracing::point3 ray_tracing::hittable::moving_sphere::get_center(const float t) const
-{
-	if (t < movement_start) return origin;
-	if (t > movement_end) return target;
-	return origin + (t - movement_start) / (movement_end - movement_start) * (target - origin);
 }

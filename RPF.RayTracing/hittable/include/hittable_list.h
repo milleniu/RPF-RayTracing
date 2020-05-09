@@ -1,7 +1,7 @@
 ﻿#pragma once
 #ifndef RPF_RAYTRACING_HITTABLE_LIST_H
 #define RPF_RAYTRACING_HITTABLE_LIST_H
-  
+
 #include "core/include/hittable.h"
 #include <memory>
 #include <vector>
@@ -14,7 +14,8 @@ namespace ray_tracing
 		{
 		public:
 			hittable_list() = default;
-			explicit hittable_list(const std::shared_ptr<hittable_base>& hittable) { add(hittable); }
+
+			explicit hittable_list(const std::shared_ptr<hittable_base>& hittable);
 
 			void add(const std::shared_ptr<hittable_base>& hittable);
 			void clear();

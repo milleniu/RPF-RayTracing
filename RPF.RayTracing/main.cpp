@@ -32,15 +32,19 @@ hittable::hittable_list get_world()
 		for (auto b = -11; b < 11; ++b)
 		{
 			const auto material = random::random_value<float>();
-			const auto position = point3{a + 0.9F * random::random_value<float>(), 0.2F, b + 0.9F * random::random_value<float>()};
+			const auto position = point3{
+				a + 0.9F * random::random_value<float>(),
+				0.2F,
+				b + 0.9F * random::random_value<float>()
+			};
 
 			if (mag(position - vector3{4.F, 0.2F, 0.F}) > 0.9F)
 			{
 				if (material < 0.8F)
 				{
 					const auto albedo = random::random_vector() * random::random_vector();
-					const auto destination = position + vector3{ 0.F, random::random_value(0.F, 0.5F), 0.F };
-					
+					const auto destination = position + vector3{0.F, random::random_value(0.F, 0.5F), 0.F};
+
 					world.add
 					(
 						std::make_shared<hittable::moving_sphere>
@@ -138,7 +142,14 @@ int main()
 		const float time_min = 0;
 		const float time_max = 1;
 
-		const core::camera main_camera{camera_position, camera_target, field_of_view, aspect_ratio, aperture, focus_distance};
+		const core::camera main_camera{
+			camera_position,
+			camera_target,
+			field_of_view,
+			aspect_ratio,
+			aperture,
+			focus_distance
+		};
 
 		for (auto j = image_height - 1; j >= 0; --j)
 		{

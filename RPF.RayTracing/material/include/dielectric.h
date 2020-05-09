@@ -11,11 +11,18 @@ namespace ray_tracing
 		class dielectric final : public core::material_base
 		{
 		public:
-			explicit dielectric(const float refractive_index) : refractive_index(refractive_index) {}
+			explicit dielectric(float refractive_index);
 
-			bool scatter(const core::ray& r, const core::hit_record& record, color& attenuation, core::ray& scattered) const override;
+			bool scatter
+			(
+				const core::ray& r,
+				const core::hit_record& record,
+				color& attenuation,
+				core::ray& scattered
+			) const override;
 
-			float refractive_index;
+		private:
+			float refractive_index_;
 		};
 	}
 }

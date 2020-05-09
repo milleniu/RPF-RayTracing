@@ -11,14 +11,20 @@ namespace ray_tracing
 		class hemispheric final : public core::material_base
 		{
 		public:
-			explicit hemispheric(const color& a): albedo(a) {}
+			explicit hemispheric(const color& a);
 
-			bool scatter(const core::ray& r, const core::hit_record& record, color& attenuation, core::ray& scattered) const override;
+			bool scatter
+			(
+				const core::ray& r,
+				const core::hit_record& record,
+				color& attenuation,
+				core::ray& scattered
+			) const override;
 
-			color albedo;
+		private:
+			color albedo_;
 		};
 	}
-
 }
 
 #endif

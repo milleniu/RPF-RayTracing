@@ -3,7 +3,6 @@
 #define RPF_RAYTRACING_HITTABLE_MOVING_SPHERE_H
 
 #include "core/include/hittable.h"
-#include <utility>
 
 namespace ray_tracing
 {
@@ -16,24 +15,25 @@ namespace ray_tracing
 
 			moving_sphere
 			(
-				const point3 origin,
-				const point3 target,
-				const float movement_start,
-				const float movement_end,
-				const float radius,
+				point3 origin,
+				point3 target,
+				float movement_start,
+				float movement_end,
+				float radius,
 				std::shared_ptr<core::material_base> material
-			) : origin(origin), target(target),
-			    movement_start(movement_start), movement_end(movement_end),
-			    radius(radius), material(std::move(material)) {}
+			);
 
 			bool hit(const core::ray& r, float t_min, float t_max, core::hit_record& record) const override;
 
 			point3 get_center(float t) const;
 
-			point3 origin, target;
-			float movement_start, movement_end;
-			float radius;
-			std::shared_ptr<core::material_base> material;
+		private:
+			point3 origin_;
+			point3 target_;
+			float movement_start_;
+			float movement_end_;
+			float radius_;
+			std::shared_ptr<core::material_base> material_;
 		};
 	}
 }

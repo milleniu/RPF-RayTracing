@@ -11,11 +11,18 @@ namespace ray_tracing
 		class lambertian final : public core::material_base
 		{
 		public:
-			explicit lambertian(const color& a): albedo(a) {}
+			explicit lambertian(const color& a);
 
-			bool scatter(const core::ray& r, const core::hit_record& record, color& attenuation, core::ray& scattered) const override;
-
-			color albedo;
+			bool scatter
+			(
+				const core::ray& r,
+				const core::hit_record& record,
+				color& attenuation,
+				core::ray& scattered
+			) const override;
+			
+		private:
+			color albedo_;
 		};
 	}
 	

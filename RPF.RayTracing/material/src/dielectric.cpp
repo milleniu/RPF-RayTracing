@@ -2,6 +2,9 @@
 #include "core/include/random.h"
 #include "core/include/hit_record.h"
 
+ray_tracing::material::dielectric::dielectric(const float refractive_index)
+	: refractive_index_(refractive_index) {}
+
 bool ray_tracing::material::dielectric::scatter
 (
 	const core::ray& r,
@@ -13,12 +16,12 @@ const
 {
 	attenuation = color{1.0, 1.0, 1.0};
 
-	const auto refractive_index_normalized = record.front_face ? 1.F / refractive_index : refractive_index;
+	const auto refractive_index_normalized = record.front_face ? 1.F / refractive_index_ : refractive_index_;
 	const auto unit_direction = normalized(r.direction());
 	const auto cos_theta = fminf(dot(-unit_direction, record.normal), 1.F);
 	const auto sin_theta = boost::qvm::sqrt(1.F - cos_theta * cos_theta);
 
-	if (refractive_index_normalized * sin_theta > 1.F )
+	if (refractive_index_normalized * sin_theta > 1.F)
 	{
 		const auto reflected = reflect(unit_direction, record.normal);
 		scattered = core::ray(record.position, reflected, r.time());

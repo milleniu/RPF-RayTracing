@@ -2,6 +2,9 @@
 #include "core/include/random.h"
 #include "core/include/hit_record.h"
 
+ray_tracing::material::lambertian::lambertian(const color& a)
+	: albedo_(a) {}
+
 bool ray_tracing::material::lambertian::scatter
 (
 	const core::ray& r,
@@ -13,6 +16,6 @@ const
 {
 	const auto scatter_direction = record.normal + random::random_unit_vector();
 	scattered = core::ray(record.position, scatter_direction, r.time());
-	attenuation = albedo;
+	attenuation = albedo_;
 	return true;
 }

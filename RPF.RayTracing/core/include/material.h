@@ -10,9 +10,11 @@ namespace ray_tracing
 	{
 		struct hit_record;
 
-		class material_base abstract {
+		class material_base abstract
+		{
 		public:
 			virtual ~material_base() {}
+
 			virtual bool scatter(const ray& r, const hit_record& record, color& attenuation, ray& scattered) const = 0;
 		};
 	}

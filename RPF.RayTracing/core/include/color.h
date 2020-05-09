@@ -15,7 +15,7 @@ namespace ray_tracing
 		inline color evaluate_ray_color(const ray& r, const hittable_base& world, const int depth)
 		{
 			hit_record record;
-			
+
 			if (depth <= 0) return {0.F, 0.F, 0.F};
 
 			if (world.hit(r, 0.001F, boost::math::tools::max_value<float>(), record))
