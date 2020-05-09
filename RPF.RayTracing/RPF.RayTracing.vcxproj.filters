@@ -21,14 +21,36 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="core\src\camera.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="core\include\camera.h">
       <Filter>Header Files\core</Filter>
     </ClInclude>
+    <ClInclude Include="core\include\color.h">
       <Filter>Header Files\core</Filter>
     </ClInclude>
+    <ClInclude Include="core\include\ray.h">
       <Filter>Header Files\core</Filter>
     </ClInclude>
+    <ClInclude Include="core\include\common.h">
       <Filter>Header Files\core</Filter>
     </ClInclude>
+    <ClInclude Include="core\include\hittable.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\include\material.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\include\hit_record.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\include\random.h">
       <Filter>Header Files\core</Filter>
     </ClInclude>
   </ItemGroup>
