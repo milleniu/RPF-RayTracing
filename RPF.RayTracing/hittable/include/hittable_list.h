@@ -2,7 +2,7 @@
 #ifndef RPF_RAYTRACING_HITTABLE_LIST_H
 #define RPF_RAYTRACING_HITTABLE_LIST_H
   
-#include "hittable.h"
+#include "core/include/hittable.h"
 #include <memory>
 #include <vector>
 

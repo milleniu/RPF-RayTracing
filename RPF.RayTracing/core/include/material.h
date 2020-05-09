@@ -1,15 +1,15 @@
 ﻿#pragma once
-#ifndef RPF_RAYTRACING_MATERIAL_H
-#define RPF_RAYTRACING_MATERIAL_H
+#ifndef RPF_RAYTRACING_CORE_MATERIAL_H
+#define RPF_RAYTRACING_CORE_MATERIAL_H
 
-#include "common.h"
-#include "ray.h"
-#include "hittable.h"
+#include "core/include/ray.h"
 
 namespace ray_tracing
 {
 	namespace core
 	{
+		struct hit_record;
+
 		class material_base abstract {
 		public:
 			virtual ~material_base() {}

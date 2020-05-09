@@ -1,12 +1,10 @@
 #pragma once
-#ifndef RPF_RAYTRACING_COLOR_H
-#define RPF_RAYTRACING_COLOR_H
+#ifndef RPF_RAYTRACING_CORE_COLOR_H
+#define RPF_RAYTRACING_CORE_COLOR_H
 
-#include "common.h"
-#include "hittable.h"
-#include "random.h"
-#include "ray.h"
-#include "material.h"
+#include "core/include/hittable.h"
+#include "core/include/ray.h"
+#include "core/include/material.h"
 
 #include <iostream>
 

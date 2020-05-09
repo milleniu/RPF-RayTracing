@@ -1,9 +1,9 @@
 ﻿#pragma once
-#ifndef RPF_RAYTRACING_CAMERA_H
-#define RPF_RAYTRACING_CAMERA_H
+#ifndef RPF_RAYTRACING_CORE_CAMERA_H
+#define RPF_RAYTRACING_CORE_CAMERA_H
 
-#include "common.h"
-#include "ray.h"
+#include "core/include/common.h"
+#include "core/include/ray.h"
 
 namespace ray_tracing
 {
@@ -43,17 +43,8 @@ namespace ray_tracing
 				viewport_height_ = 2 * half_height * focus_distance * v_;
 			}
 
-			ray get_ray(const float s, const float t) const
-			{
-				const auto random_in_disk = lens_radius_ * random_vector_in_disk();
-				const auto offset = u_ * random_in_disk.a[0] + v_ * random_in_disk.a[1];
-
-				return
-				{
-					origin_ + offset,
-					viewport_origin_ + s * viewport_width_ + t * viewport_height_ - origin_ - offset
-				};
-			}
+			ray get_ray(float s, float t) const;
+			
 
 		private:
 			point3 origin_;

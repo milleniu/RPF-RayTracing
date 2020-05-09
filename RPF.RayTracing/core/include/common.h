@@ -1,6 +1,6 @@
 ﻿#pragma once
-#ifndef RPF_RAYTRACING_COMMON_H
-#define RPF_RAYTRACING_COMMON_H
+#ifndef RPF_RAYTRACING_CORE_COMMON_H
+#define RPF_RAYTRACING_CORE_COMMON_H
 
 #include <boost/math/constants/constants.hpp>
 #include <boost/qvm/vec.hpp>
@@ -46,7 +46,7 @@ namespace ray_tracing
 	}
 
 	template <class T>
-	constexpr const T& degrees_to_radians(const T& degrees) {
+	constexpr T degrees_to_radians(const T& degrees) {
 		return degrees * boost::math::constants::pi<T>() / static_cast<T>(180);
 	}
 }

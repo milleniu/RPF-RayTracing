@@ -18,6 +18,32 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="core\src\camera.cpp" />
+    <ClCompile Include="hittable\src\hittable_list.cpp" />
+    <ClCompile Include="hittable\src\sphere.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="material\src\dielectric.cpp" />
+    <ClCompile Include="material\src\hemispheric.cpp" />
+    <ClCompile Include="material\src\lambertian.cpp" />
+    <ClCompile Include="material\src\metal.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="core\include\camera.h" />
+    <ClInclude Include="core\include\color.h" />
+    <ClInclude Include="core\include\common.h" />
+    <ClInclude Include="core\include\hittable.h" />
+    <ClInclude Include="core\include\material.h" />
+    <ClInclude Include="core\include\random.h" />
+    <ClInclude Include="core\include\ray.h" />
+    <ClInclude Include="core\include\hit_record.h" />
+    <ClInclude Include="hittable\include\hittable_list.h" />
+    <ClInclude Include="hittable\include\sphere.h" />
+    <ClInclude Include="material\include\dielectric.h" />
+    <ClInclude Include="material\include\hemispheric.h" />
+    <ClInclude Include="material\include\lambertian.h" />
+    <ClInclude Include="material\include\metal.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{63E6644B-7F07-437A-ACBD-63B8922A361A}</ProjectGuid>
@@ -90,7 +116,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>%VCLIBS%\boost_1_73_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%VCLIBS%/boost_1_73_0;$(MSBuildProjectDirectory);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -105,6 +131,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>%VCLIBS%/boost_1_73_0;$(MSBuildProjectDirectory);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -121,7 +148,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>%VCLIBS%\boost_1_73_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%VCLIBS%/boost_1_73_0;$(MSBuildProjectDirectory);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -140,6 +167,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>%VCLIBS%/boost_1_73_0;$(MSBuildProjectDirectory);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -148,30 +176,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="dielectric.cpp" />
-    <ClCompile Include="hemispheric.cpp" />
-    <ClCompile Include="hittable_list.cpp" />
-    <ClCompile Include="lambertian.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="metal.cpp" />
-    <ClCompile Include="sphere.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="camera.h" />
-    <ClInclude Include="color.h" />
-    <ClInclude Include="common.h" />
-    <ClInclude Include="dielectric.h" />
-    <ClInclude Include="hemispheric.h" />
-    <ClInclude Include="hittable.h" />
-    <ClInclude Include="hittable_list.h" />
-    <ClInclude Include="lambertian.h" />
-    <ClInclude Include="material.h" />
-    <ClInclude Include="metal.h" />
-    <ClInclude Include="random.h" />
-    <ClInclude Include="ray.h" />
-    <ClInclude Include="sphere.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

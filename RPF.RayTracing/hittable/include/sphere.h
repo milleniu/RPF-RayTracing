@@ -1,8 +1,8 @@
 #pragma once
-#ifndef RPF_RAYTRACING_SPHERE_H
-#define RPF_RAYTRACING_SPHERE_H
+#ifndef RPF_RAYTRACING_HITTABLE_SPHERE_H
+#define RPF_RAYTRACING_HITTABLE_SPHERE_H
 
-#include "hittable.h"
+#include "core/include/hittable.h"
 #include <utility>
 
 namespace ray_tracing

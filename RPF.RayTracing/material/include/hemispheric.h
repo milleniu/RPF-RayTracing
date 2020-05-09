@@ -1,25 +1,24 @@
 ﻿#pragma once
-#ifndef RAY_TRACING_LAMBERTIAN_H
-#define RAY_TRACING_LAMBERTIAN_H
+#ifndef RPF_RAYTRACING_MATERIAL_HEMISPHERIC_H
+#define RPF_RAYTRACING_MATERIAL_HEMISPHERIC_H
 
-#include "material.h"
-#include "random.h"
+#include "core/include/material.h"
 
 namespace ray_tracing
 {
 	namespace material
 	{
-		class lambertian final : public core::material_base
+		class hemispheric final : public core::material_base
 		{
 		public:
-			explicit lambertian(const color& a): albedo(a) {}
+			explicit hemispheric(const color& a): albedo(a) {}
 
 			bool scatter(const core::ray& r, const core::hit_record& record, color& attenuation, core::ray& scattered) const override;
 
 			color albedo;
 		};
 	}
-	
+
 }
 
 #endif

@@ -1,8 +1,8 @@
 #pragma once
-#ifndef RPF_RAYTRACING_RAY_H
-#define RPF_RAYTRACING_RAY_H
+#ifndef RPF_RAYTRACING_CORE_RAY_H
+#define RPF_RAYTRACING_CORE_RAY_H
 
-#include "common.h"
+#include "core/include/common.h"
 
 namespace ray_tracing
 {

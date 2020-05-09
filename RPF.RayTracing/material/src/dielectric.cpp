@@ -1,7 +1,15 @@
-﻿#include "dielectric.h"
+﻿#include "material/include/dielectric.h"
+#include "core/include/random.h"
+#include "core/include/hit_record.h"
 
-bool ray_tracing::material::dielectric::scatter(const core::ray& r, const core::hit_record& record, color& attenuation,
-                                                core::ray& scattered) const
+bool ray_tracing::material::dielectric::scatter
+(
+	const core::ray& r,
+	const core::hit_record& record,
+	color& attenuation,
+	core::ray& scattered
+)
+const
 {
 	attenuation = color{1.0, 1.0, 1.0};
 
@@ -18,7 +26,7 @@ bool ray_tracing::material::dielectric::scatter(const core::ray& r, const core::
 	}
 
 	const auto reflect_probability = schlick_approximation(cos_theta, refractive_index_normalized);
-	if (random_float() < reflect_probability)
+	if (random::random_value<float>() < reflect_probability)
 	{
 		const auto reflected = reflect(unit_direction, record.normal);
 		scattered = core::ray(record.position, reflected);

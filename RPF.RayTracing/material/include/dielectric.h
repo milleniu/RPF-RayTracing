@@ -1,9 +1,8 @@
 ﻿#pragma once
-#ifndef RPF_RAYTRACING_DIELECTRIC_H
-#define RPF_RAYTRACING_DIELECTRIC_H
+#ifndef RPF_RAYTRACING_MATERIAL_DIELECTRIC_H
+#define RPF_RAYTRACING_MATERIAL_DIELECTRIC_H
 
-#include "material.h"
-#include "random.h"
+#include "core/include/material.h"
 
 namespace ray_tracing
 {

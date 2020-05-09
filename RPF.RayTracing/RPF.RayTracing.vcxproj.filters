@@ -13,84 +13,93 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Source Files\hittables">
-      <UniqueIdentifier>{eecded2b-da6e-4a68-b73c-e9dabece5bb3}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\core">
-      <UniqueIdentifier>{6fe6bfc0-875a-4594-a0f3-6e7ba1c471b6}</UniqueIdentifier>
+      <UniqueIdentifier>{1ca14214-4f4c-444f-9273-78dec7f0c76c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\hittable">
-      <UniqueIdentifier>{6ea258de-2e36-4b6d-8deb-86d2c9a5175a}</UniqueIdentifier>
+    <Filter Include="Source Files\core">
+      <UniqueIdentifier>{43781814-b651-4ece-989c-302171daa938}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\material">
-      <UniqueIdentifier>{bad5432c-3a84-4e4f-9ee1-2f83dd4ce76f}</UniqueIdentifier>
+      <UniqueIdentifier>{e2bce65d-fd44-4d3f-b15e-6ecaa8c93b1d}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\material">
-      <UniqueIdentifier>{acf59732-8ec6-458b-ab87-6f12231115fb}</UniqueIdentifier>
+      <UniqueIdentifier>{06a4490b-db7f-482e-80ee-9106445ceadf}</UniqueIdentifier>
     </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="sphere.h">
-      <Filter>Header Files\hittable</Filter>
-    </ClInclude>
-    <ClInclude Include="hittable_list.h">
-      <Filter>Header Files\hittable</Filter>
-    </ClInclude>
-    <ClInclude Include="color.h">
-      <Filter>Header Files\core</Filter>
-    </ClInclude>
-    <ClInclude Include="ray.h">
-      <Filter>Header Files\core</Filter>
-    </ClInclude>
-    <ClInclude Include="camera.h">
-      <Filter>Header Files\core</Filter>
-    </ClInclude>
-    <ClInclude Include="common.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="random.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="material.h">
-      <Filter>Header Files\core</Filter>
-    </ClInclude>
-    <ClInclude Include="hittable.h">
-      <Filter>Header Files\core</Filter>
-    </ClInclude>
-    <ClInclude Include="lambertian.h">
-      <Filter>Header Files\material</Filter>
-    </ClInclude>
-    <ClInclude Include="hemispheric.h">
-      <Filter>Header Files\material</Filter>
-    </ClInclude>
-    <ClInclude Include="metal.h">
-      <Filter>Header Files\material</Filter>
-    </ClInclude>
-    <ClInclude Include="dielectric.h">
-      <Filter>Header Files\material</Filter>
-    </ClInclude>
+    <Filter Include="Header Files\hittable">
+      <UniqueIdentifier>{6ffee0fd-279b-4e82-a263-07d29af787fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\hittable">
+      <UniqueIdentifier>{b0506af6-9f38-46a3-bc59-75cd1b9bb6aa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="sphere.cpp">
-      <Filter>Source Files\hittables</Filter>
+    <ClCompile Include="core\src\camera.cpp">
+      <Filter>Source Files\core</Filter>
     </ClCompile>
-    <ClCompile Include="hittable_list.cpp">
-      <Filter>Source Files\hittables</Filter>
-    </ClCompile>
-    <ClCompile Include="lambertian.cpp">
+    <ClCompile Include="material\src\dielectric.cpp">
       <Filter>Source Files\material</Filter>
     </ClCompile>
-    <ClCompile Include="hemispheric.cpp">
+    <ClCompile Include="material\src\hemispheric.cpp">
       <Filter>Source Files\material</Filter>
     </ClCompile>
-    <ClCompile Include="metal.cpp">
+    <ClCompile Include="material\src\lambertian.cpp">
       <Filter>Source Files\material</Filter>
     </ClCompile>
-    <ClCompile Include="dielectric.cpp">
+    <ClCompile Include="material\src\metal.cpp">
       <Filter>Source Files\material</Filter>
     </ClCompile>
+    <ClCompile Include="hittable\src\hittable_list.cpp">
+      <Filter>Source Files\hittable</Filter>
+    </ClCompile>
+    <ClCompile Include="hittable\src\sphere.cpp">
+      <Filter>Source Files\hittable</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="core\include\camera.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\include\color.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\include\ray.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\include\common.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\include\hittable.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\include\material.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\include\hit_record.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="material\include\dielectric.h">
+      <Filter>Header Files\material</Filter>
+    </ClInclude>
+    <ClInclude Include="material\include\hemispheric.h">
+      <Filter>Header Files\material</Filter>
+    </ClInclude>
+    <ClInclude Include="material\include\lambertian.h">
+      <Filter>Header Files\material</Filter>
+    </ClInclude>
+    <ClInclude Include="material\include\metal.h">
+      <Filter>Header Files\material</Filter>
+    </ClInclude>
+    <ClInclude Include="core\include\random.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="hittable\include\hittable_list.h">
+      <Filter>Header Files\hittable</Filter>
+    </ClInclude>
+    <ClInclude Include="hittable\include\sphere.h">
+      <Filter>Header Files\hittable</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
