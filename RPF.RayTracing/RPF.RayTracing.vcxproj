@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="core\src\camera.cpp" />
+    <ClCompile Include="hittable\src\moving_sphere.cpp" />
     <ClCompile Include="hittable\src\hittable_list.cpp" />
     <ClCompile Include="hittable\src\sphere.cpp" />
     <ClCompile Include="main.cpp" />
@@ -38,6 +39,7 @@
     <ClInclude Include="core\include\ray.h" />
     <ClInclude Include="core\include\hit_record.h" />
     <ClInclude Include="hittable\include\hittable_list.h" />
+    <ClInclude Include="hittable\include\moving_sphere.h" />
     <ClInclude Include="hittable\include\sphere.h" />
     <ClInclude Include="material\include\dielectric.h" />
     <ClInclude Include="material\include\hemispheric.h" />

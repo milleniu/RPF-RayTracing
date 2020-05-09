@@ -57,6 +57,9 @@
     <ClCompile Include="hittable\src\sphere.cpp">
       <Filter>Source Files\hittable</Filter>
     </ClCompile>
+    <ClCompile Include="hittable\src\moving_sphere.cpp">
+      <Filter>Source Files\hittable</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core\include\camera.h">
@@ -99,6 +102,9 @@
       <Filter>Header Files\hittable</Filter>
     </ClInclude>
     <ClInclude Include="hittable\include\sphere.h">
+      <Filter>Header Files\hittable</Filter>
+    </ClInclude>
+    <ClInclude Include="hittable\include\moving_sphere.h">
       <Filter>Header Files\hittable</Filter>
     </ClInclude>
   </ItemGroup>

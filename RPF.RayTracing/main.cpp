@@ -3,7 +3,7 @@
 #include "core/include/random.h"
 #include "hittable/include/hittable_list.h"
 #include "hittable/include/sphere.h"
-#include "material/include/hemispheric.h"
+#include "hittable/include/moving_sphere.h"
 #include "material/include/lambertian.h"
 #include "material/include/metal.h"
 #include "material/include/dielectric.h"
@@ -39,11 +39,16 @@ hittable::hittable_list get_world()
 				if (material < 0.8F)
 				{
 					const auto albedo = random::random_vector() * random::random_vector();
+					const auto destination = position + vector3{ 0.F, random::random_value(0.F, 0.5F), 0.F };
+					
 					world.add
 					(
-						std::make_shared<hittable::sphere>
+						std::make_shared<hittable::moving_sphere>
 						(
 							position,
+							destination,
+							0.F,
+							1.F,
 							0.2F,
 							std::make_shared<material::lambertian>(albedo)
 						)
