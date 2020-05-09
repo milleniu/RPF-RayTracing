@@ -148,30 +148,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="dielectric.cpp" />
-    <ClCompile Include="hemispheric.cpp" />
-    <ClCompile Include="hittable_list.cpp" />
-    <ClCompile Include="lambertian.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="metal.cpp" />
-    <ClCompile Include="sphere.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="camera.h" />
-    <ClInclude Include="color.h" />
-    <ClInclude Include="common.h" />
-    <ClInclude Include="dielectric.h" />
-    <ClInclude Include="hemispheric.h" />
-    <ClInclude Include="hittable.h" />
-    <ClInclude Include="hittable_list.h" />
-    <ClInclude Include="lambertian.h" />
-    <ClInclude Include="material.h" />
-    <ClInclude Include="metal.h" />
-    <ClInclude Include="random.h" />
-    <ClInclude Include="ray.h" />
-    <ClInclude Include="sphere.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
