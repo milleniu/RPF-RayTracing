@@ -13,11 +13,12 @@ namespace ray_tracing
 		public:
 			ray() = default;
 
-			ray(const point3& origin, const vector3& direction)
-				: origin_(origin), direction_(direction) {}
+			ray(const point3& origin, const vector3& direction, const float time = 0.F)
+				: origin_(origin), direction_(direction), time_(time) {}
 
 			point3 origin() const { return origin_; }
 			vector3 direction() const { return direction_; }
+			float time() const { return time_;  }
 
 			point3 evaluate(const float t) const
 			{
@@ -27,6 +28,7 @@ namespace ray_tracing
 		private:
 			point3 origin_;
 			vector3 direction_;
+			float time_;
 		};
 	}
 }

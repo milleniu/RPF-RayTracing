@@ -128,8 +128,10 @@ int main()
 		const point3 camera_position{13.F, 2.F, 3.F};
 		const point3 camera_target{0.F, 0.F, 0.F};
 		const float field_of_view = 20;
-		const float aperture = 0.1;
+		const float aperture = 0;
 		const float focus_distance = 10.0;
+		const float time_min = 0;
+		const float time_max = 1;
 
 		const core::camera main_camera{camera_position, camera_target, field_of_view, aspect_ratio, aperture, focus_distance};
 
@@ -143,7 +145,7 @@ int main()
 				{
 					const auto u = (i + random::random_value<float>()) / (image_width - 1.F);
 					const auto v = (j + random::random_value<float>()) / (image_height - 1.F);
-					const auto r = main_camera.get_ray(u, v);
+					const auto r = main_camera.get_ray(u, v, random::random_value(time_min, time_max));
 					pixel_color += evaluate_ray_color(r, world, max_depth);
 				}
 

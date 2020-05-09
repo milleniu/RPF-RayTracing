@@ -12,7 +12,7 @@ bool ray_tracing::material::lambertian::scatter
 const
 {
 	const auto scatter_direction = record.normal + random::random_unit_vector();
-	scattered = core::ray(record.position, scatter_direction);
+	scattered = core::ray(record.position, scatter_direction, r.time());
 	attenuation = albedo;
 	return true;
 }

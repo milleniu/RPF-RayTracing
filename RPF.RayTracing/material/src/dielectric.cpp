@@ -21,7 +21,7 @@ const
 	if (refractive_index_normalized * sin_theta > 1.F )
 	{
 		const auto reflected = reflect(unit_direction, record.normal);
-		scattered = core::ray(record.position, reflected);
+		scattered = core::ray(record.position, reflected, r.time());
 		return true;
 	}
 
@@ -29,11 +29,11 @@ const
 	if (random::random_value<float>() < reflect_probability)
 	{
 		const auto reflected = reflect(unit_direction, record.normal);
-		scattered = core::ray(record.position, reflected);
+		scattered = core::ray(record.position, reflected, r.time());
 		return true;
 	}
 
 	const auto refracted = refract(unit_direction, record.normal, refractive_index_normalized);
-	scattered = core::ray(record.position, refracted);
+	scattered = core::ray(record.position, refracted, r.time());
 	return true;
 }

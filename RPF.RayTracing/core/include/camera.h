@@ -43,7 +43,7 @@ namespace ray_tracing
 				viewport_height_ = 2 * half_height * focus_distance * v_;
 			}
 
-			ray get_ray(float s, float t) const;
+			ray get_ray(float s, float t, float time) const;
 			
 
 		private:

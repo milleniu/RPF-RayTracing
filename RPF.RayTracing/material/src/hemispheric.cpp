@@ -12,7 +12,7 @@ bool ray_tracing::material::hemispheric::scatter
 const
 {
 	const auto scatter_direction = random::random_in_hemisphere(record.normal);
-	scattered = core::ray(record.position, scatter_direction);
+	scattered = core::ray(record.position, scatter_direction, r.time());
 	attenuation = albedo;
 	return true;
 }
