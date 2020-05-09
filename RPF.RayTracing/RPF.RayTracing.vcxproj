@@ -21,6 +21,10 @@
   <ItemGroup>
     <ClCompile Include="core\src\camera.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="material\src\dielectric.cpp" />
+    <ClCompile Include="material\src\hemispheric.cpp" />
+    <ClCompile Include="material\src\lambertian.cpp" />
+    <ClCompile Include="material\src\metal.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core\include\camera.h" />
@@ -31,6 +35,10 @@
     <ClInclude Include="core\include\random.h" />
     <ClInclude Include="core\include\ray.h" />
     <ClInclude Include="core\include\hit_record.h" />
+    <ClInclude Include="material\include\dielectric.h" />
+    <ClInclude Include="material\include\hemispheric.h" />
+    <ClInclude Include="material\include\lambertian.h" />
+    <ClInclude Include="material\include\metal.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
