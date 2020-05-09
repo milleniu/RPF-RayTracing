@@ -1,28 +1,26 @@
-#include "color.h"
-#include "hittable_list.h"
-#include "sphere.h"
-#include "camera.h"
-#include "hemispheric.h"
-#include "lambertian.h"
-#include "random.h"
-#include "metal.h"
-#include "dielectric.h"
+#include "core/include/color.h"
+#include "core/include/camera.h"
+#include "core/include/random.h"
+#include "hittable/include/hittable_list.h"
+#include "hittable/include/sphere.h"
+#include "material/include/hemispheric.h"
+#include "material/include/lambertian.h"
+#include "material/include/metal.h"
+#include "material/include/dielectric.h"
 
 #include <boost/math/tools/precision.hpp>
 
 #include <iostream>
 
 using namespace ray_tracing;
-using namespace ray_tracing::hittable;
-using namespace ray_tracing::core;
 
-hittable_list get_world()
+hittable::hittable_list get_world()
 {
-	hittable_list world;
+	hittable::hittable_list world;
 
 	world.add
 	(
-		std::make_shared<sphere>
+		std::make_shared<hittable::sphere>
 		(
 			point3{0.F, -1000.F, 0.F},
 			1000.F,
@@ -33,17 +31,17 @@ hittable_list get_world()
 	for (auto a = -11; a < 11; ++a)
 		for (auto b = -11; b < 11; ++b)
 		{
-			const auto material = random_float();
-			const auto position = point3{a + 0.9F * random_float(), 0.2F, b + 0.9F * random_float()};
+			const auto material = random::random_value<float>();
+			const auto position = point3{a + 0.9F * random::random_value<float>(), 0.2F, b + 0.9F * random::random_value<float>()};
 
 			if (mag(position - vector3{4.F, 0.2F, 0.F}) > 0.9F)
 			{
 				if (material < 0.8F)
 				{
-					const auto albedo = random_vector() * random_vector();
+					const auto albedo = random::random_vector() * random::random_vector();
 					world.add
 					(
-						std::make_shared<sphere>
+						std::make_shared<hittable::sphere>
 						(
 							position,
 							0.2F,
@@ -53,11 +51,11 @@ hittable_list get_world()
 				}
 				else if (material < 0.95F)
 				{
-					const auto albedo = random_vector(.5F, 1);
-					const auto fuzz = random_float(0, .5F);
+					const auto albedo = random::random_vector(.5F, 1);
+					const auto fuzz = random::random_value<float>(0, .5F);
 					world.add
 					(
-						std::make_shared<sphere>
+						std::make_shared<hittable::sphere>
 						(
 							position,
 							0.2F,
@@ -69,7 +67,7 @@ hittable_list get_world()
 				{
 					world.add
 					(
-						std::make_shared<sphere>
+						std::make_shared<hittable::sphere>
 						(
 							position,
 							0.2F,
@@ -82,7 +80,7 @@ hittable_list get_world()
 
 	world.add
 	(
-		std::make_shared<sphere>
+		std::make_shared<hittable::sphere>
 		(
 			point3{0.F, 1.F, 0.F},
 			1.F,
@@ -92,7 +90,7 @@ hittable_list get_world()
 
 	world.add
 	(
-		std::make_shared<sphere>
+		std::make_shared<hittable::sphere>
 		(
 			point3{-4.F, 1.F, 0.F},
 			1.F,
@@ -102,7 +100,7 @@ hittable_list get_world()
 
 	world.add
 	(
-		std::make_shared<sphere>
+		std::make_shared<hittable::sphere>
 		(
 			point3{4.F, 1.F, 0.F},
 			1.F,
@@ -133,7 +131,7 @@ int main()
 		const float aperture = 0.1;
 		const float focus_distance = 10.0;
 
-		const camera main_camera{camera_position, camera_target, field_of_view, aspect_ratio, aperture, focus_distance};
+		const core::camera main_camera{camera_position, camera_target, field_of_view, aspect_ratio, aperture, focus_distance};
 
 		for (auto j = image_height - 1; j >= 0; --j)
 		{
@@ -143,13 +141,13 @@ int main()
 				color pixel_color{0.F, 0.F, 0.F};
 				for (auto s = 0; s < samples; ++s)
 				{
-					const auto u = (i + random_float()) / (image_width - 1.F);
-					const auto v = (j + random_float()) / (image_height - 1.F);
+					const auto u = (i + random::random_value<float>()) / (image_width - 1.F);
+					const auto v = (j + random::random_value<float>()) / (image_height - 1.F);
 					const auto r = main_camera.get_ray(u, v);
 					pixel_color += evaluate_ray_color(r, world, max_depth);
 				}
 
-				write_color_to(std::cout, pixel_color / samples);
+				core::write_color_to(std::cout, pixel_color / samples);
 			}
 		}
 
