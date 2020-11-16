@@ -12,6 +12,8 @@ namespace ray_tracing
 		struct hit_record
 		{
 			float t{};
+			float u{};
+			float v{};
 			point3 position{};
 			vector3 normal{};
 			std::shared_ptr<material_base> material_ptr;

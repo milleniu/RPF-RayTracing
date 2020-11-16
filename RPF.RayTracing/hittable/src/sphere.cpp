@@ -29,6 +29,7 @@ const
 			record.position = r.evaluate(record.t);
 			const auto outward_normal = (record.position - center_) / radius_;
 			record.set_face_normal(r, outward_normal);
+			get_sphere_uv(outward_normal, record.u, record.v);
 			record.material_ptr = material_;
 			return true;
 		}
@@ -40,6 +41,7 @@ const
 			record.position = r.evaluate(record.t);
 			const auto outward_normal = (record.position - center_) / radius_;
 			record.set_face_normal(r, outward_normal);
+			get_sphere_uv(outward_normal, record.u, record.v);
 			record.material_ptr = material_;
 			return true;
 		}

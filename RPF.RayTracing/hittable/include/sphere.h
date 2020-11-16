@@ -27,6 +27,12 @@ namespace ray_tracing
 			point3 center_;
 			float radius_;
 			std::shared_ptr<core::material_base> material_;
+
+			static void get_sphere_uv(const point3& p, float& u, float& v)
+			{
+				const auto theta = boost::qvm::acos(-p.a[1]);
+				const auto phi = boost::qvm::atan2(-p.a[2], p.a[0]) + boost::math::constants::pi<float>();
+			}
 		};
 	}
 }

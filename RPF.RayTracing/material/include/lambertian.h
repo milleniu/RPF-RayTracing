@@ -3,6 +3,7 @@
 #define RPF_RAYTRACING_MATERIAL_LAMBERTIAN_H
 
 #include "core/include/material.h"
+#include "core/include/texture.h"
 
 namespace ray_tracing
 {
@@ -12,6 +13,7 @@ namespace ray_tracing
 		{
 		public:
 			explicit lambertian(const color& a);
+			explicit lambertian(std::shared_ptr<core::texture> a);
 
 			bool scatter
 			(
@@ -22,7 +24,7 @@ namespace ray_tracing
 			) const override;
 			
 		private:
-			color albedo_;
+			std::shared_ptr<core::texture> albedo_;
 		};
 	}
 	
