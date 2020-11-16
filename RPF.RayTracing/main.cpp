@@ -4,6 +4,7 @@
 #include "hittable/include/hittable_list.h"
 #include "hittable/include/sphere.h"
 #include "hittable/include/moving_sphere.h"
+#include "hittable/include/bounding_volume_hierarchy.h"
 #include "material/include/lambertian.h"
 #include "material/include/metal.h"
 #include "material/include/dielectric.h"
@@ -14,7 +15,7 @@
 
 using namespace ray_tracing;
 
-hittable::hittable_list get_world()
+hittable::hittable_list get_world( float t0, float t1 )
 {
 	hittable::hittable_list world;
 
@@ -28,7 +29,11 @@ hittable::hittable_list get_world()
 		)
 	);
 
+	hittable::hittable_list spheres;
 	for (auto a = -11; a < 11; ++a)
+	{
+		hittable::hittable_list slice;
+		
 		for (auto b = -11; b < 11; ++b)
 		{
 			const auto material = random::random_value<float>();
@@ -38,14 +43,14 @@ hittable::hittable_list get_world()
 				b + 0.9F * random::random_value<float>()
 			};
 
-			if (mag(position - vector3{4.F, 0.2F, 0.F}) > 0.9F)
+			if (mag(position - vector3{ 4.F, 0.2F, 0.F }) > 0.9F)
 			{
 				if (material < 0.8F)
 				{
 					const auto albedo = random::random_vector() * random::random_vector();
-					const auto destination = position + vector3{0.F, random::random_value(0.F, 0.5F), 0.F};
+					const auto destination = position + vector3{ 0.F, random::random_value(0.F, 0.5F), 0.F };
 
-					world.add
+					slice.add
 					(
 						std::make_shared<hittable::moving_sphere>
 						(
@@ -62,7 +67,7 @@ hittable::hittable_list get_world()
 				{
 					const auto albedo = random::random_vector(.5F, 1);
 					const auto fuzz = random::random_value<float>(0, .5F);
-					world.add
+					slice.add
 					(
 						std::make_shared<hittable::sphere>
 						(
@@ -74,7 +79,7 @@ hittable::hittable_list get_world()
 				}
 				else
 				{
-					world.add
+					slice.add
 					(
 						std::make_shared<hittable::sphere>
 						(
@@ -86,6 +91,27 @@ hittable::hittable_list get_world()
 				}
 			}
 		}
+
+		spheres.add
+		(
+			std::make_shared<hittable::bounding_volume_hierarchy>
+			(
+				slice,
+				t0,
+				t1
+			)
+		);
+	}
+
+	world.add
+	(
+		std::make_shared<hittable::bounding_volume_hierarchy>
+		(
+			spheres,
+			t0,
+			t1
+		)
+	);
 
 	world.add
 	(
@@ -127,21 +153,20 @@ int main()
 		const auto aspect_ratio = 16.F / 9.F;
 		const auto image_width = 1080;
 		const auto image_height = static_cast<int>(image_width / aspect_ratio);
-		const auto samples = 50;
+		const auto samples = 100;
 		const auto max_depth = 50;
 
 		std::cout << "P3\n" << image_width << ' ' << image_height << "\n255\n";
 
-		const auto world = get_world();
-
 		const point3 camera_position{13.F, 2.F, 3.F};
 		const point3 camera_target{0.F, 0.F, 0.F};
-		const float field_of_view = 20;
-		const float aperture = 0;
-		const float focus_distance = 10.0;
-		const float time_min = 0;
-		const float time_max = 1;
+		const auto field_of_view = 20.F;
+		const auto aperture = 0.1F;
+		const auto focus_distance = 10.F;
+		const auto time_min = 0.F;
+		const auto time_max = 1.F;
 
+		const auto world = get_world( time_min, time_max );
 		const core::camera main_camera{
 			camera_position,
 			camera_target,
