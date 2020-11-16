@@ -65,3 +65,27 @@ const
 
 	return false;
 }
+
+bool ray_tracing::hittable::moving_sphere::bbox
+(
+	const float t0,
+	const float t1,
+	core::aabb& computed_bbox
+)
+const
+{
+	const core::aabb t0_bounds
+	{
+		get_center(t0) - vector3{ radius_, radius_, radius_ },
+		get_center(t0) + vector3{ radius_, radius_, radius_ }
+	};
+
+	const core::aabb t1_bounds
+	{
+		get_center(t1) - vector3{ radius_, radius_, radius_ },
+		get_center(t1) + vector3{ radius_, radius_, radius_ }
+	};
+
+	computed_bbox = core::aabb::bbox(t0_bounds, t1_bounds);
+	return true;
+}

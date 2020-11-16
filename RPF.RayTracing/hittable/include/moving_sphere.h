@@ -24,6 +24,7 @@ namespace ray_tracing
 			);
 
 			bool hit(const core::ray& r, float t_min, float t_max, core::hit_record& record) const override;
+			bool bbox(float t0, float t1, core::aabb& computed_bbox) const override;
 
 			point3 get_center(float t) const;
 

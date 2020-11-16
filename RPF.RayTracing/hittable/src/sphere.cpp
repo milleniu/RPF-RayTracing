@@ -47,3 +47,19 @@ const
 
 	return false;
 }
+
+bool ray_tracing::hittable::sphere::bbox
+(
+	float t0,
+	float t1,
+	core::aabb& computed_bbox
+)
+const
+{
+	computed_bbox =
+	{
+		center_ - vector3{radius_,radius_,radius_},
+		center_ + vector3{radius_,radius_,radius_}
+	};
+	return true;
+}

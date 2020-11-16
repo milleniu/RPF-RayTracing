@@ -4,6 +4,7 @@
 
 #include "core/include/ray.h"
 #include "core/include/hit_record.h"
+#include "core/include/aabb.h"
 
 namespace ray_tracing
 {
@@ -15,6 +16,7 @@ namespace ray_tracing
 			virtual ~hittable_base() {}
 			
 			virtual bool hit(const ray& r, float t_min, float t_max, hit_record& record) const = 0;
+			virtual bool bbox(float t0, float t1, aabb& computed_bbox) const = 0;
 		};
 	}
 }
