@@ -25,6 +25,9 @@ namespace ray_tracing
 
 		private:
 			std::vector<std::shared_ptr<hittable_base>> hittable_vector_;
+
+		public:
+			std::vector<std::shared_ptr<hittable_base>>& hittable_vector() { return hittable_vector_; }
 		};
 	}
 }

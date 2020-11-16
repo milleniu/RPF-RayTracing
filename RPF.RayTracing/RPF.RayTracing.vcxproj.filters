@@ -63,6 +63,9 @@
     <ClCompile Include="core\src\aabb.cpp">
       <Filter>Source Files\core</Filter>
     </ClCompile>
+    <ClCompile Include="hittable\src\bounding_volume_hierarchy.cpp">
+      <Filter>Source Files\hittable</Filter>
+    </ClCompile>
     <ClCompile Include="core\src\ray.cpp">
       <Filter>Source Files\core</Filter>
     </ClCompile>
@@ -115,6 +118,9 @@
     </ClInclude>
     <ClInclude Include="core\include\aabb.h">
       <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="hittable\include\bounding_volume_hierarchy.h">
+      <Filter>Header Files\hittable</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

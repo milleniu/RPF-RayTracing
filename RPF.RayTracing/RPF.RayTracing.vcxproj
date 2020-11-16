@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="core\src\aabb.cpp" />
     <ClCompile Include="core\src\camera.cpp" />
+    <ClCompile Include="hittable\src\bounding_volume_hierarchy.cpp" />
     <ClCompile Include="hittable\src\moving_sphere.cpp" />
     <ClCompile Include="hittable\src\hittable_list.cpp" />
     <ClCompile Include="hittable\src\sphere.cpp" />
@@ -41,6 +42,7 @@
     <ClInclude Include="core\include\random.h" />
     <ClInclude Include="core\include\ray.h" />
     <ClInclude Include="core\include\hit_record.h" />
+    <ClInclude Include="hittable\include\bounding_volume_hierarchy.h" />
     <ClInclude Include="hittable\include\hittable_list.h" />
     <ClInclude Include="hittable\include\moving_sphere.h" />
     <ClInclude Include="hittable\include\sphere.h" />

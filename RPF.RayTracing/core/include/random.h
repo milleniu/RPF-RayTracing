@@ -5,6 +5,7 @@
 #include "core/include/common.h"
 #include <boost/random/mersenne_twister.hpp>
 #include <boost/random/uniform_real.hpp>
+#include <boost/random/uniform_int.hpp>
 
 namespace ray_tracing
 {
@@ -12,21 +13,33 @@ namespace ray_tracing
 	{
 		namespace detail
 		{
-			static boost::random::mt19937 rng;
+			static boost::random::mt19937 rng = boost::random::mt19937();
 		}
 
-		template <class T>
+		template <class T, typename std::enable_if<std::is_floating_point<T>::value>::type * = nullptr>
 		T random_value()
 		{
 			return boost::random::uniform_real_distribution<T>()(detail::rng);
 		}
 
-		template <class T>
+		template <class T, typename std::enable_if<std::is_floating_point<T>::value>::type* = nullptr>
 		T random_value(const T min, const T max)
 		{
 			return boost::random::uniform_real_distribution<T>(min, max)(detail::rng);
 		}
 
+		template <class T, typename std::enable_if<std::is_integral<T>::value>::type* = nullptr>
+		T random_value()
+		{
+			return boost::random::uniform_int_distribution<T>()(detail::rng);
+		}
+		
+		template <class T, typename std::enable_if<std::is_integral<T>::value>::type* = nullptr>
+		T random_value(const int min, const int max)
+		{
+			return boost::random::uniform_int_distribution<T>(min, max)(detail::rng);
+		}
+		
 		inline vector3 random_vector()
 		{
 			return vector3
