@@ -60,7 +60,10 @@
     <ClCompile Include="hittable\src\moving_sphere.cpp">
       <Filter>Source Files\hittable</Filter>
     </ClCompile>
-    <ClCompile Include="core\include\ray.cpp">
+    <ClCompile Include="core\src\aabb.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\src\ray.cpp">
       <Filter>Source Files\core</Filter>
     </ClCompile>
   </ItemGroup>
@@ -109,6 +112,9 @@
     </ClInclude>
     <ClInclude Include="hittable\include\moving_sphere.h">
       <Filter>Header Files\hittable</Filter>
+    </ClInclude>
+    <ClInclude Include="core\include\aabb.h">
+      <Filter>Header Files\core</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

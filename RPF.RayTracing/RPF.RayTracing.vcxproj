@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="core\src\aabb.cpp" />
     <ClCompile Include="core\src\camera.cpp" />
     <ClCompile Include="hittable\src\moving_sphere.cpp" />
     <ClCompile Include="hittable\src\hittable_list.cpp" />
@@ -28,9 +29,10 @@
     <ClCompile Include="material\src\hemispheric.cpp" />
     <ClCompile Include="material\src\lambertian.cpp" />
     <ClCompile Include="material\src\metal.cpp" />
-    <ClCompile Include="core\include\ray.cpp" />
+    <ClCompile Include="core\src\ray.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="core\include\aabb.h" />
     <ClInclude Include="core\include\camera.h" />
     <ClInclude Include="core\include\color.h" />
     <ClInclude Include="core\include\common.h" />
