@@ -12,7 +12,7 @@ ray_tracing::hittable::bounding_volume_hierarchy::bounding_volume_hierarchy
 
 ray_tracing::hittable::bounding_volume_hierarchy::bounding_volume_hierarchy
 (
-	std::vector<std::shared_ptr<core::hittable_base>>& hittable_list,
+	std::vector<std::shared_ptr<core::hittable>>& hittable_list,
 	const size_t start,
 	const size_t end,
 	const float t0,

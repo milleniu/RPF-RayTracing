@@ -12,7 +12,7 @@ namespace ray_tracing
 {
 	namespace core
 	{
-		inline color evaluate_ray_color(const ray& r, const hittable_base& world, const int depth)
+		inline color evaluate_ray_color(const ray& r, const hittable& world, const int depth)
 		{
 			hit_record record;
 

@@ -10,24 +10,24 @@ namespace ray_tracing
 {
 	namespace hittable
 	{
-		class hittable_list final : public core::hittable_base
+		class hittable_list final : public core::hittable
 		{
 		public:
 			hittable_list() = default;
 
-			explicit hittable_list(const std::shared_ptr<hittable_base>& hittable);
+			explicit hittable_list(const std::shared_ptr<hittable>& hittable);
 
-			void add(const std::shared_ptr<hittable_base>& hittable);
+			void add(const std::shared_ptr<hittable>& hittable);
 			void clear();
 
 			bool hit(const core::ray& r, float t_min, float t_max, core::hit_record& record) const override;
 			bool bbox(float t0, float t1, core::aabb& computed_bbox) const override;
 
 		private:
-			std::vector<std::shared_ptr<hittable_base>> hittable_vector_;
+			std::vector<std::shared_ptr<hittable>> hittable_vector_;
 
 		public:
-			std::vector<std::shared_ptr<hittable_base>>& hittable_vector() { return hittable_vector_; }
+			std::vector<std::shared_ptr<hittable>>& hittable_vector() { return hittable_vector_; }
 		};
 	}
 }

@@ -13,8 +13,8 @@ namespace ray_tracing
 		{
 			inline bool bbox_comparison
 			(
-				const std::shared_ptr<core::hittable_base>& a,
-				const std::shared_ptr<core::hittable_base>& b,
+				const std::shared_ptr<core::hittable>& a,
+				const std::shared_ptr<core::hittable>& b,
 				const int axis
 			)
 			{
@@ -28,8 +28,8 @@ namespace ray_tracing
 
 			inline bool bbox_x_comparison
 			(
-				const std::shared_ptr<core::hittable_base>& a,
-				const std::shared_ptr<core::hittable_base>& b
+				const std::shared_ptr<core::hittable>& a,
+				const std::shared_ptr<core::hittable>& b
 			)
 			{
 				return bbox_comparison(a, b, 0);
@@ -37,8 +37,8 @@ namespace ray_tracing
 
 			inline bool bbox_y_comparison
 			(
-				const std::shared_ptr<core::hittable_base>& a,
-				const std::shared_ptr<core::hittable_base>& b
+				const std::shared_ptr<core::hittable>& a,
+				const std::shared_ptr<core::hittable>& b
 			)
 			{
 				return bbox_comparison(a, b, 1);
@@ -46,15 +46,15 @@ namespace ray_tracing
 
 			inline bool bbox_z_comparison
 			(
-				const std::shared_ptr<core::hittable_base>& a,
-				const std::shared_ptr<core::hittable_base>& b
+				const std::shared_ptr<core::hittable>& a,
+				const std::shared_ptr<core::hittable>& b
 			)
 			{
 				return bbox_comparison(a, b, 2);
 			}
 		}
 
-		class bounding_volume_hierarchy final : public core::hittable_base
+		class bounding_volume_hierarchy final : public core::hittable
 		{
 		public:
 			bounding_volume_hierarchy() = default;
@@ -63,7 +63,7 @@ namespace ray_tracing
 
 			bounding_volume_hierarchy
 			(
-				std::vector<std::shared_ptr<core::hittable_base>>& hittable_list,
+				std::vector<std::shared_ptr<core::hittable>>& hittable_list,
 				size_t start,
 				size_t end,
 				float t0,
@@ -74,8 +74,8 @@ namespace ray_tracing
 			bool bbox(float t0, float t1, core::aabb& computed_bbox) const override;
 
 		private:
-			std::shared_ptr<hittable_base> left_;
-			std::shared_ptr<hittable_base> right_;
+			std::shared_ptr<hittable> left_;
+			std::shared_ptr<hittable> right_;
 			core::aabb bbox_{};
 		};
 	}

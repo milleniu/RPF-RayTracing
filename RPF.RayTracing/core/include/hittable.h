@@ -10,10 +10,10 @@ namespace ray_tracing
 {
 	namespace core
 	{
-		class hittable_base abstract
+		class hittable abstract
 		{
 		public:
-			virtual ~hittable_base() {}
+			virtual ~hittable() {}
 			
 			virtual bool hit(const ray& r, float t_min, float t_max, hit_record& record) const = 0;
 			virtual bool bbox(float t0, float t1, aabb& computed_bbox) const = 0;

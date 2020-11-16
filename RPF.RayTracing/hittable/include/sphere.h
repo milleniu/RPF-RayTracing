@@ -8,7 +8,7 @@ namespace ray_tracing
 {
 	namespace hittable
 	{
-		class sphere final : public core::hittable_base
+		class sphere final : public core::hittable
 		{
 		public:
 			sphere() = default;
