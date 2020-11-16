@@ -31,6 +31,7 @@
     <ClCompile Include="material\src\lambertian.cpp" />
     <ClCompile Include="material\src\metal.cpp" />
     <ClCompile Include="core\src\ray.cpp" />
+    <ClCompile Include="texture\src\solid_color.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core\include\aabb.h" />
@@ -42,6 +43,7 @@
     <ClInclude Include="core\include\random.h" />
     <ClInclude Include="core\include\ray.h" />
     <ClInclude Include="core\include\hit_record.h" />
+    <ClInclude Include="core\include\texture.h" />
     <ClInclude Include="hittable\include\bounding_volume_hierarchy.h" />
     <ClInclude Include="hittable\include\hittable_list.h" />
     <ClInclude Include="hittable\include\moving_sphere.h" />
@@ -50,6 +52,7 @@
     <ClInclude Include="material\include\hemispheric.h" />
     <ClInclude Include="material\include\lambertian.h" />
     <ClInclude Include="material\include\metal.h" />
+    <ClInclude Include="texture\include\solid_color.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
