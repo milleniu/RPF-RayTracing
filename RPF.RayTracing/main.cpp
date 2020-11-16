@@ -13,6 +13,8 @@
 
 #include <iostream>
 
+#include "texture/include/checker.h"
+
 using namespace ray_tracing;
 
 hittable::hittable_list get_world( float t0, float t1 )
@@ -23,9 +25,16 @@ hittable::hittable_list get_world( float t0, float t1 )
 	(
 		std::make_shared<hittable::sphere>
 		(
-			point3{0.F, -1000.F, 0.F},
+			point3{ 0.F, -1000.F, 0.F },
 			1000.F,
-			std::make_shared<material::lambertian>(color{0.5F, 0.5F, 0.5F})
+			std::make_shared<material::lambertian>
+			(
+				std::make_shared<texture::checker>
+				(
+					color{ 0.2F, 0.3F, 0.1F },
+					color{ 0.9F, 0.9F, 0.9F }
+				)
+			)
 		)
 	);
 

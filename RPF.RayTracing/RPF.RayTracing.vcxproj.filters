@@ -69,6 +69,9 @@
     <ClCompile Include="texture\src\solid_color.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="texture\src\checker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core\include\camera.h">
@@ -123,6 +126,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="texture\include\solid_color.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="texture\include\checker.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -30,6 +30,7 @@
     <ClCompile Include="material\src\lambertian.cpp" />
     <ClCompile Include="material\src\metal.cpp" />
     <ClCompile Include="core\src\ray.cpp" />
+    <ClCompile Include="texture\src\checker.cpp" />
     <ClCompile Include="texture\src\solid_color.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -50,6 +51,7 @@
     <ClInclude Include="material\include\dielectric.h" />
     <ClInclude Include="material\include\lambertian.h" />
     <ClInclude Include="material\include\metal.h" />
+    <ClInclude Include="texture\include\checker.h" />
     <ClInclude Include="texture\include\solid_color.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
