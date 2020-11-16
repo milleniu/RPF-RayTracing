@@ -74,8 +74,8 @@ namespace ray_tracing
 			bool bbox(float t0, float t1, core::aabb& computed_bbox) const override;
 
 		private:
-			std::shared_ptr<hittable> left_;
-			std::shared_ptr<hittable> right_;
+			std::shared_ptr<hittable> left_{};
+			std::shared_ptr<hittable> right_{};
 			core::aabb bbox_{};
 		};
 	}

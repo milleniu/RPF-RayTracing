@@ -12,8 +12,8 @@ namespace ray_tracing
 		{
 		public:
 			solid_color() = default;
-			explicit solid_color(const color c) : color_value_(c) {}
-			explicit solid_color(const float red, const float green, const float blue) : solid_color(color{ red, green, blue }) {}
+			explicit solid_color(const color c);
+			explicit solid_color(const float red, const float green, const float blue);
 
 			color value(float u, float v, const point3& p) const override;
 

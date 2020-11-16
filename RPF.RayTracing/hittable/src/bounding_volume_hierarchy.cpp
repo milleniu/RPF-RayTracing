@@ -12,12 +12,12 @@ ray_tracing::hittable::bounding_volume_hierarchy::bounding_volume_hierarchy
 
 ray_tracing::hittable::bounding_volume_hierarchy::bounding_volume_hierarchy
 (
-	std::vector<std::shared_ptr<core::hittable>>& hittable_list,
+	std::vector<std::shared_ptr<hittable>>& hittable_list,
 	const size_t start,
 	const size_t end,
 	const float t0,
 	const float t1
-) : bbox_({})
+)
 {
 	const auto axis = random::random_value<int>(0, 2);
 	const auto comparer =

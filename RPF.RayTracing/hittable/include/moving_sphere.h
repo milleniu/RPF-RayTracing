@@ -29,11 +29,11 @@ namespace ray_tracing
 			point3 get_center(float t) const;
 
 		private:
-			point3 origin_;
-			point3 target_;
-			float movement_start_;
-			float movement_end_;
-			float radius_;
+			point3 origin_{};
+			point3 target_{};
+			float movement_start_{};
+			float movement_end_{};
+			float radius_{};
 			std::shared_ptr<core::material_base> material_;
 		};
 	}

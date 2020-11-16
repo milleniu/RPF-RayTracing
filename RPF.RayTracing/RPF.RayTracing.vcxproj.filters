@@ -42,9 +42,6 @@
     <ClCompile Include="material\src\dielectric.cpp">
       <Filter>Source Files\material</Filter>
     </ClCompile>
-    <ClCompile Include="material\src\hemispheric.cpp">
-      <Filter>Source Files\material</Filter>
-    </ClCompile>
     <ClCompile Include="material\src\lambertian.cpp">
       <Filter>Source Files\material</Filter>
     </ClCompile>
@@ -96,9 +93,6 @@
       <Filter>Header Files\core</Filter>
     </ClInclude>
     <ClInclude Include="material\include\dielectric.h">
-      <Filter>Header Files\material</Filter>
-    </ClInclude>
-    <ClInclude Include="material\include\hemispheric.h">
       <Filter>Header Files\material</Filter>
     </ClInclude>
     <ClInclude Include="material\include\lambertian.h">

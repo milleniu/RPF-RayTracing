@@ -24,9 +24,9 @@ namespace ray_tracing
 			bool bbox(float t0, float t1, core::aabb& computed_bbox) const override;
 
 		private:
-			point3 center_;
-			float radius_;
-			std::shared_ptr<core::material_base> material_;
+			point3 center_{};
+			float radius_{};
+			std::shared_ptr<core::material_base> material_{};
 
 			static void get_sphere_uv(const point3& p, float& u, float& v)
 			{
