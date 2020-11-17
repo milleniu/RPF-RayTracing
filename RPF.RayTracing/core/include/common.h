@@ -38,7 +38,7 @@ namespace ray_tracing
 	}
 
 	template <class T>
-	constexpr const T& schlick_approximation(const T& cosine, const T& refractive_index)
+	constexpr T schlick_approximation(const T& cosine, const T& refractive_index)
 	{
 		const auto r0 = (1 - refractive_index) / (1 + refractive_index);
 		const auto r0_sqr = r0 * r0;
