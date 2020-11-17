@@ -75,6 +75,8 @@
     <ClCompile Include="texture\src\checker.cpp">
       <Filter>Source Files\texture</Filter>
     </ClCompile>
+    <ClCompile Include="texture\src\image.cpp">
+      <Filter>Source Files\texture</Filter>
     </ClCompile>
     <ClCompile Include="texture\src\noise.cpp">
       <Filter>Source Files\texture</Filter>
@@ -138,6 +140,8 @@
     <ClInclude Include="texture\include\checker.h">
       <Filter>Header Files\texture</Filter>
     </ClInclude>
+    <ClInclude Include="texture\include\image.h">
+      <Filter>Header Files\texture</Filter>
     </ClInclude>
     <ClInclude Include="texture\include\noise.h">
       <Filter>Header Files\texture</Filter>

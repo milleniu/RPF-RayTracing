@@ -10,6 +10,7 @@
 #include "material/include/dielectric.h"
 #include "texture/include/checker.h"
 #include "texture/include/noise.h"
+#include "texture/include/image.h"
 
 #include <boost/math/tools/precision.hpp>
 
@@ -217,6 +218,15 @@ hittable::hittable_list two_perlin_spheres()
 	return world;
 }
 
+hittable::hittable_list earth()
+{
+	const auto earth_texture = std::make_shared<texture::image>(std::string("resource/earthmap.jpg"));
+	const auto earth_surface = std::make_shared<material::lambertian>(earth_texture);
+	const auto globe = std::make_shared<hittable::sphere>(point3{ 0.F, 0.F, 0.F }, 2.F, earth_surface);
+
+	return hittable::hittable_list(globe);
+}
+
 int main()
 {
 	try
@@ -257,9 +267,17 @@ int main()
 			aperture = 0.F;
 			break;
 
-		default:
 		case 3:
 			world = two_perlin_spheres();
+			camera_position = { 13.F, 2.F, 3.F };
+			camera_target = { 0.F, 0.F, 0.F };
+			field_of_view = 20.F;
+			aperture = 0.F;
+			break;
+
+		default:
+		case 4:
+			world = earth();
 			camera_position = { 13.F, 2.F, 3.F };
 			camera_target = { 0.F, 0.F, 0.F };
 			field_of_view = 20.F;
