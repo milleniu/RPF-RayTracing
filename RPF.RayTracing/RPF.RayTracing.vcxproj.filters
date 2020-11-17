@@ -31,6 +31,12 @@
     <Filter Include="Source Files\hittable">
       <UniqueIdentifier>{b0506af6-9f38-46a3-bc59-75cd1b9bb6aa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\texture">
+      <UniqueIdentifier>{fc14dea5-7dce-4022-88a7-a944b3ecbee6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\texture">
+      <UniqueIdentifier>{6ce545da-dbd1-4ff3-b402-72a770d09abc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -66,17 +72,18 @@
     <ClCompile Include="core\src\ray.cpp">
       <Filter>Source Files\core</Filter>
     </ClCompile>
-    <ClCompile Include="texture\src\solid_color.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="texture\src\checker.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\texture</Filter>
     </ClCompile>
-    <ClCompile Include="core\src\perlin.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="texture\src\noise.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\texture</Filter>
+    </ClCompile>
+    <ClCompile Include="core\src\perlin.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="texture\src\solid_color.cpp">
+      <Filter>Source Files\texture</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -128,20 +135,21 @@
     <ClInclude Include="hittable\include\bounding_volume_hierarchy.h">
       <Filter>Header Files\hittable</Filter>
     </ClInclude>
-    <ClInclude Include="core\include\texture.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="texture\include\solid_color.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="texture\include\checker.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\texture</Filter>
     </ClInclude>
-    <ClInclude Include="core\include\perlin.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="texture\include\noise.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\texture</Filter>
+    </ClInclude>
+    <ClInclude Include="core\include\perlin.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="texture\include\solid_color.h">
+      <Filter>Header Files\texture</Filter>
+    </ClInclude>
+    <ClInclude Include="core\include\texture.h">
+      <Filter>Header Files\core</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
