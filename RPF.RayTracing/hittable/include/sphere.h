@@ -32,6 +32,9 @@ namespace ray_tracing
 			{
 				const auto theta = boost::qvm::acos(-p.a[1]);
 				const auto phi = boost::qvm::atan2(-p.a[2], p.a[0]) + boost::math::constants::pi<float>();
+
+				u = phi / (2 * boost::math::constants::pi<float>());
+				v = theta / boost::math::constants::pi<float>();
 			}
 		};
 	}
