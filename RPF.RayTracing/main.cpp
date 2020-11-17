@@ -9,6 +9,7 @@
 #include "material/include/metal.h"
 #include "material/include/dielectric.h"
 #include "texture/include/checker.h"
+#include "texture/include/noise.h"
 
 #include <boost/math/tools/precision.hpp>
 
@@ -159,9 +160,9 @@ hittable::hittable_list two_spheres()
 	hittable::hittable_list world;
 
 	const auto checker = std::make_shared<texture::checker>
-		(
-			color{ 0.2F, 0.3F, 0.1F },
-			color{ 0.9F, 0.9F, 0.9F }
+	(
+		color{ 0.2F, 0.3F, 0.1F },
+		color{ 0.9F, 0.9F, 0.9F }
 	);
 
 	world.add
@@ -171,7 +172,7 @@ hittable::hittable_list two_spheres()
 			point3{ 0, -10, 0 },
 			10,
 			std::make_shared<material::lambertian>(checker)
-			)
+		)
 	);
 
 	world.add
@@ -181,7 +182,36 @@ hittable::hittable_list two_spheres()
 			point3{ 0, 10, 0 },
 			10,
 			std::make_shared<material::lambertian>(checker)
-			)
+		)
+	);
+
+	return world;
+}
+
+hittable::hittable_list two_perlin_spheres()
+{
+	hittable::hittable_list world;
+
+	const auto perlin = std::make_shared<texture::noise>(4);
+
+	world.add
+	(
+		std::make_shared<hittable::sphere>
+		(
+			point3{ 0, -1000, 0 },
+			1000,
+			std::make_shared<material::lambertian>(perlin)
+		)
+	);
+
+	world.add
+	(
+		std::make_shared<hittable::sphere>
+		(
+			point3{ 0, 2, 0 },
+			2,
+			std::make_shared<material::lambertian>(perlin)
+		)
 	);
 
 	return world;
@@ -208,8 +238,8 @@ int main()
 		point3 camera_target;
 		float field_of_view;
 		float aperture;
-		
-		switch(0)
+
+		switch (0)
 		{
 		case 1:
 			world = get_world(time_min, time_max);
@@ -219,7 +249,6 @@ int main()
 			aperture = 0.1F;
 			break;
 
-		default:
 		case 2:
 			world = two_spheres();
 			camera_position = { 13.F, 2.F, 3.F };
@@ -227,8 +256,17 @@ int main()
 			field_of_view = 20.F;
 			aperture = 0.F;
 			break;
+
+		default:
+		case 3:
+			world = two_perlin_spheres();
+			camera_position = { 13.F, 2.F, 3.F };
+			camera_target = { 0.F, 0.F, 0.F };
+			field_of_view = 20.F;
+			aperture = 0.F;
+			break;
 		}
-		
+
 		const core::camera main_camera{
 			camera_position,
 			camera_target,
