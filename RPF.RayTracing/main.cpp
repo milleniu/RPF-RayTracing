@@ -169,8 +169,8 @@ hittable::hittable_list two_spheres()
 	(
 		std::make_shared<hittable::sphere>
 		(
-			point3{ 0, -10, 0 },
-			10,
+			point3{ 0.F, -10.F, 0.F },
+			10.F,
 			std::make_shared<material::lambertian>(checker)
 		)
 	);
@@ -179,8 +179,8 @@ hittable::hittable_list two_spheres()
 	(
 		std::make_shared<hittable::sphere>
 		(
-			point3{ 0, 10, 0 },
-			10,
+			point3{ 0.F, 10.F, 0.F },
+			10.F,
 			std::make_shared<material::lambertian>(checker)
 		)
 	);
@@ -192,14 +192,14 @@ hittable::hittable_list two_perlin_spheres()
 {
 	hittable::hittable_list world;
 
-	const auto perlin = std::make_shared<texture::noise>(4);
+	const auto perlin = std::make_shared<texture::noise>(4.F);
 
 	world.add
 	(
 		std::make_shared<hittable::sphere>
 		(
-			point3{ 0, -1000, 0 },
-			1000,
+			point3{ 0.F, -1000.F, 0.F },
+			1000.F,
 			std::make_shared<material::lambertian>(perlin)
 		)
 	);
@@ -208,8 +208,8 @@ hittable::hittable_list two_perlin_spheres()
 	(
 		std::make_shared<hittable::sphere>
 		(
-			point3{ 0, 2, 0 },
-			2,
+			point3{ 0.F, 2.F, 0.F },
+			2.F,
 			std::make_shared<material::lambertian>(perlin)
 		)
 	);
